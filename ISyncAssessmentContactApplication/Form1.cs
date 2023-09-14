@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -13,8 +15,15 @@ namespace ISyncAssessmentContactApplication
 {
     public partial class Form1 : KryptonForm
     {
+        string connStr = ConfigurationManager.ConnectionStrings["ApplicationConnectionString"].ConnectionString;
+
         public Form1()
         {
+            SqlConnection conn = new SqlConnection(connStr);
+            conn.Open();
+
+            MessageBox.Show("Connection Successful");
+
             InitializeComponent();
         }
     }
