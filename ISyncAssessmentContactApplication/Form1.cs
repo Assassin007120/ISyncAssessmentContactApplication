@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ComponentFactory.Krypton.Toolkit;
+using ISyncAssessmentContactApplication.Forms;
 
 namespace ISyncAssessmentContactApplication
 {
@@ -23,6 +24,13 @@ namespace ISyncAssessmentContactApplication
             conn.Open();
 
             InitializeComponent();
+        }
+
+        private void createCategoryBtn_Click(object sender, EventArgs e)
+        {
+            var createCategoryFrm = new CreateCategoryFrm();
+
+            createCategoryFrm.ShowDialog();
         }
     }
 }
