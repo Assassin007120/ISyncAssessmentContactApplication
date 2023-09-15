@@ -32,7 +32,7 @@
             this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.createCategoryBtn = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.createMainFrmCategoryBtn = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kryptonButton1 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.SuspendLayout();
             // 
@@ -90,64 +90,65 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Welcome to the next generation of contact management";
             // 
-            // createCategoryBtn
+            // createMainFrmCategoryBtn
             // 
-            this.createCategoryBtn.Location = new System.Drawing.Point(35, 192);
-            this.createCategoryBtn.Name = "createCategoryBtn";
-            this.createCategoryBtn.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
-            this.createCategoryBtn.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
-            this.createCategoryBtn.OverrideDefault.Back.ColorAngle = 45F;
-            this.createCategoryBtn.OverrideDefault.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
-            this.createCategoryBtn.OverrideDefault.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
-            this.createCategoryBtn.OverrideDefault.Border.ColorAngle = 45F;
-            this.createCategoryBtn.OverrideDefault.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            this.createMainFrmCategoryBtn.Location = new System.Drawing.Point(35, 192);
+            this.createMainFrmCategoryBtn.Name = "createMainFrmCategoryBtn";
+            this.createMainFrmCategoryBtn.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.createMainFrmCategoryBtn.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.createMainFrmCategoryBtn.OverrideDefault.Back.ColorAngle = 45F;
+            this.createMainFrmCategoryBtn.OverrideDefault.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.createMainFrmCategoryBtn.OverrideDefault.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.createMainFrmCategoryBtn.OverrideDefault.Border.ColorAngle = 45F;
+            this.createMainFrmCategoryBtn.OverrideDefault.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.createCategoryBtn.OverrideDefault.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.createCategoryBtn.OverrideDefault.Border.Rounding = 20;
-            this.createCategoryBtn.OverrideDefault.Border.Width = 1;
-            this.createCategoryBtn.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.createCategoryBtn.Size = new System.Drawing.Size(171, 43);
-            this.createCategoryBtn.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
-            this.createCategoryBtn.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
-            this.createCategoryBtn.StateCommon.Back.ColorAngle = 45F;
-            this.createCategoryBtn.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
-            this.createCategoryBtn.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
-            this.createCategoryBtn.StateCommon.Border.ColorAngle = 45F;
-            this.createCategoryBtn.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            this.createMainFrmCategoryBtn.OverrideDefault.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.createMainFrmCategoryBtn.OverrideDefault.Border.Rounding = 20;
+            this.createMainFrmCategoryBtn.OverrideDefault.Border.Width = 1;
+            this.createMainFrmCategoryBtn.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.createMainFrmCategoryBtn.Size = new System.Drawing.Size(171, 43);
+            this.createMainFrmCategoryBtn.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.createMainFrmCategoryBtn.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.createMainFrmCategoryBtn.StateCommon.Back.ColorAngle = 45F;
+            this.createMainFrmCategoryBtn.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.createMainFrmCategoryBtn.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.createMainFrmCategoryBtn.StateCommon.Border.ColorAngle = 45F;
+            this.createMainFrmCategoryBtn.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.createCategoryBtn.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.createCategoryBtn.StateCommon.Border.Rounding = 20;
-            this.createCategoryBtn.StateCommon.Border.Width = 1;
-            this.createCategoryBtn.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.createCategoryBtn.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.createCategoryBtn.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createCategoryBtn.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(145)))), ((int)(((byte)(198)))));
-            this.createCategoryBtn.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
-            this.createCategoryBtn.StatePressed.Back.ColorAngle = 135F;
-            this.createCategoryBtn.StatePressed.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(145)))), ((int)(((byte)(198)))));
-            this.createCategoryBtn.StatePressed.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
-            this.createCategoryBtn.StatePressed.Border.ColorAngle = 135F;
-            this.createCategoryBtn.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            this.createMainFrmCategoryBtn.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.createMainFrmCategoryBtn.StateCommon.Border.Rounding = 20;
+            this.createMainFrmCategoryBtn.StateCommon.Border.Width = 1;
+            this.createMainFrmCategoryBtn.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
+            this.createMainFrmCategoryBtn.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
+            this.createMainFrmCategoryBtn.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.createMainFrmCategoryBtn.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(145)))), ((int)(((byte)(198)))));
+            this.createMainFrmCategoryBtn.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.createMainFrmCategoryBtn.StatePressed.Back.ColorAngle = 135F;
+            this.createMainFrmCategoryBtn.StatePressed.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(145)))), ((int)(((byte)(198)))));
+            this.createMainFrmCategoryBtn.StatePressed.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.createMainFrmCategoryBtn.StatePressed.Border.ColorAngle = 135F;
+            this.createMainFrmCategoryBtn.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.createCategoryBtn.StatePressed.Border.Rounding = 20;
-            this.createCategoryBtn.StatePressed.Border.Width = 1;
-            this.createCategoryBtn.StateTracking.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
-            this.createCategoryBtn.StateTracking.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
-            this.createCategoryBtn.StateTracking.Back.ColorAngle = 45F;
-            this.createCategoryBtn.StateTracking.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
-            this.createCategoryBtn.StateTracking.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
-            this.createCategoryBtn.StateTracking.Border.ColorAngle = 45F;
-            this.createCategoryBtn.StateTracking.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            this.createMainFrmCategoryBtn.StatePressed.Border.Rounding = 20;
+            this.createMainFrmCategoryBtn.StatePressed.Border.Width = 1;
+            this.createMainFrmCategoryBtn.StateTracking.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.createMainFrmCategoryBtn.StateTracking.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.createMainFrmCategoryBtn.StateTracking.Back.ColorAngle = 45F;
+            this.createMainFrmCategoryBtn.StateTracking.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.createMainFrmCategoryBtn.StateTracking.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.createMainFrmCategoryBtn.StateTracking.Border.ColorAngle = 45F;
+            this.createMainFrmCategoryBtn.StateTracking.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.createCategoryBtn.StateTracking.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.createCategoryBtn.StateTracking.Border.Rounding = 20;
-            this.createCategoryBtn.StateTracking.Border.Width = 1;
-            this.createCategoryBtn.TabIndex = 2;
-            this.createCategoryBtn.Values.Text = "Create Category";
+            this.createMainFrmCategoryBtn.StateTracking.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.createMainFrmCategoryBtn.StateTracking.Border.Rounding = 20;
+            this.createMainFrmCategoryBtn.StateTracking.Border.Width = 1;
+            this.createMainFrmCategoryBtn.TabIndex = 2;
+            this.createMainFrmCategoryBtn.Values.Text = "Create Category";
+            this.createMainFrmCategoryBtn.Click += new System.EventHandler(this.createCategoryBtn_Click);
             // 
             // kryptonButton1
             // 
@@ -214,7 +215,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.ClientSize = new System.Drawing.Size(770, 369);
             this.Controls.Add(this.kryptonButton1);
-            this.Controls.Add(this.createCategoryBtn);
+            this.Controls.Add(this.createMainFrmCategoryBtn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
@@ -235,7 +236,7 @@
         private ComponentFactory.Krypton.Toolkit.KryptonPalette kryptonPalette1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton createCategoryBtn;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton createMainFrmCategoryBtn;
         private ComponentFactory.Krypton.Toolkit.KryptonButton kryptonButton1;
     }
 }
