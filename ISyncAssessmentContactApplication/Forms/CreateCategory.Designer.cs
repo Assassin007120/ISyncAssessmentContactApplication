@@ -35,8 +35,16 @@
             this.isActiveCheckBox = new ComponentFactory.Krypton.Toolkit.KryptonCheckBox();
             this.createCategoryBtn = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
-            this.lblCategoryListView = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
-            this.categoryListBox = new ComponentFactory.Krypton.Toolkit.KryptonListBox();
+            this.categoryDataGridView = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.categoryNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isActiveDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.iSyncContactdBDataSet = new ISyncAssessmentContactApplication.ISyncContactdBDataSet();
+            this.categoryTableAdapter = new ISyncAssessmentContactApplication.ISyncContactdBDataSetTableAdapters.CategoryTableAdapter();
+            this.categorySearchTextBox = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.categoryDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iSyncContactdBDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -191,32 +199,120 @@
             this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.ButtonEdgeInset = 10;
             this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, -1, -1, -1);
             // 
-            // lblCategoryListView
+            // categoryDataGridView
             // 
-            this.lblCategoryListView.Location = new System.Drawing.Point(473, 40);
-            this.lblCategoryListView.Name = "lblCategoryListView";
-            this.lblCategoryListView.Palette = this.kryptonPalette1;
-            this.lblCategoryListView.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
-            this.lblCategoryListView.Size = new System.Drawing.Size(97, 25);
-            this.lblCategoryListView.StateCommon.ShortText.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCategoryListView.TabIndex = 7;
-            this.lblCategoryListView.Values.Text = "Categories";
+            this.categoryDataGridView.AutoGenerateColumns = false;
+            this.categoryDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.categoryDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.categoryNameDataGridViewTextBoxColumn,
+            this.isActiveDataGridViewCheckBoxColumn});
+            this.categoryDataGridView.DataSource = this.categoryBindingSource;
+            this.categoryDataGridView.Location = new System.Drawing.Point(473, 65);
+            this.categoryDataGridView.Name = "categoryDataGridView";
+            this.categoryDataGridView.Palette = this.kryptonPalette1;
+            this.categoryDataGridView.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
+            this.categoryDataGridView.ReadOnly = true;
+            this.categoryDataGridView.Size = new System.Drawing.Size(242, 185);
+            this.categoryDataGridView.StateCommon.Background.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.categoryDataGridView.StateCommon.Background.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.categoryDataGridView.StateCommon.Background.ColorAngle = 45F;
+            this.categoryDataGridView.StateCommon.BackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundList;
+            this.categoryDataGridView.StateCommon.HeaderColumn.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.categoryDataGridView.StateCommon.HeaderColumn.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.categoryDataGridView.StateCommon.HeaderColumn.Back.ColorAngle = 45F;
+            this.categoryDataGridView.StateCommon.HeaderColumn.Back.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.categoryDataGridView.StateCommon.HeaderColumn.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.categoryDataGridView.StateCommon.HeaderColumn.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.categoryDataGridView.StateCommon.HeaderColumn.Border.ColorAngle = 45F;
+            this.categoryDataGridView.StateCommon.HeaderColumn.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.categoryDataGridView.StateCommon.HeaderColumn.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.categoryDataGridView.StateCommon.HeaderColumn.Border.Rounding = 1;
+            this.categoryDataGridView.StateCommon.HeaderColumn.Border.Width = 1;
+            this.categoryDataGridView.StateCommon.HeaderColumn.Content.Color1 = System.Drawing.Color.White;
+            this.categoryDataGridView.StateCommon.HeaderColumn.Content.Color2 = System.Drawing.Color.White;
+            this.categoryDataGridView.StateCommon.HeaderColumn.Content.ColorAngle = 45F;
+            this.categoryDataGridView.StateCommon.HeaderColumn.Content.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.categoryDataGridView.StateCommon.HeaderRow.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.categoryDataGridView.StateCommon.HeaderRow.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.categoryDataGridView.StateCommon.HeaderRow.Back.ColorAngle = 45F;
+            this.categoryDataGridView.StateCommon.HeaderRow.Back.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.categoryDataGridView.StateCommon.HeaderRow.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.categoryDataGridView.StateCommon.HeaderRow.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.categoryDataGridView.StateCommon.HeaderRow.Border.ColorAngle = 45F;
+            this.categoryDataGridView.StateCommon.HeaderRow.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.categoryDataGridView.StateCommon.HeaderRow.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.categoryDataGridView.StateCommon.HeaderRow.Border.Rounding = 1;
+            this.categoryDataGridView.StateCommon.HeaderRow.Border.Width = 1;
+            this.categoryDataGridView.StateCommon.HeaderRow.Content.Color1 = System.Drawing.Color.White;
+            this.categoryDataGridView.StateCommon.HeaderRow.Content.Color2 = System.Drawing.Color.White;
+            this.categoryDataGridView.StateCommon.HeaderRow.Content.ColorAngle = 45F;
+            this.categoryDataGridView.TabIndex = 8;
             // 
-            // categoryListBox
+            // categoryNameDataGridViewTextBoxColumn
             // 
-            this.categoryListBox.Location = new System.Drawing.Point(473, 65);
-            this.categoryListBox.Name = "categoryListBox";
-            this.categoryListBox.Size = new System.Drawing.Size(326, 185);
-            this.categoryListBox.TabIndex = 8;
+            this.categoryNameDataGridViewTextBoxColumn.DataPropertyName = "CategoryName";
+            this.categoryNameDataGridViewTextBoxColumn.HeaderText = "CategoryName";
+            this.categoryNameDataGridViewTextBoxColumn.Name = "categoryNameDataGridViewTextBoxColumn";
+            // 
+            // isActiveDataGridViewCheckBoxColumn
+            // 
+            this.isActiveDataGridViewCheckBoxColumn.DataPropertyName = "IsActive";
+            this.isActiveDataGridViewCheckBoxColumn.HeaderText = "IsActive";
+            this.isActiveDataGridViewCheckBoxColumn.Name = "isActiveDataGridViewCheckBoxColumn";
+            // 
+            // categoryBindingSource
+            // 
+            this.categoryBindingSource.DataMember = "Category";
+            this.categoryBindingSource.DataSource = this.iSyncContactdBDataSet;
+            // 
+            // iSyncContactdBDataSet
+            // 
+            this.iSyncContactdBDataSet.DataSetName = "ISyncContactdBDataSet";
+            this.iSyncContactdBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // categoryTableAdapter
+            // 
+            this.categoryTableAdapter.ClearBeforeFill = true;
+            // 
+            // categorySearchTextBox
+            // 
+            this.categorySearchTextBox.Location = new System.Drawing.Point(512, 24);
+            this.categorySearchTextBox.Name = "categorySearchTextBox";
+            this.categorySearchTextBox.Size = new System.Drawing.Size(203, 33);
+            this.categorySearchTextBox.StateActive.Back.Color1 = System.Drawing.Color.White;
+            this.categorySearchTextBox.StateActive.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.categorySearchTextBox.StateActive.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.categorySearchTextBox.StateActive.Border.ColorAngle = 45F;
+            this.categorySearchTextBox.StateActive.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.categorySearchTextBox.StateActive.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.categorySearchTextBox.StateCommon.Back.Color1 = System.Drawing.Color.White;
+            this.categorySearchTextBox.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.categorySearchTextBox.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.categorySearchTextBox.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.categorySearchTextBox.StateCommon.Border.Rounding = 20;
+            this.categorySearchTextBox.StateCommon.Content.Color1 = System.Drawing.Color.Gray;
+            this.categorySearchTextBox.StateCommon.Content.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.categorySearchTextBox.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.categorySearchTextBox.TabIndex = 9;
+            this.categorySearchTextBox.Text = "Search";
+            this.categorySearchTextBox.TextChanged += new System.EventHandler(this.categorySearchTextBox_TextChanged);
             // 
             // CreateCategoryFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
-            this.ClientSize = new System.Drawing.Size(811, 284);
-            this.Controls.Add(this.categoryListBox);
-            this.Controls.Add(this.lblCategoryListView);
+            this.ClientSize = new System.Drawing.Size(770, 284);
+            this.Controls.Add(this.categorySearchTextBox);
+            this.Controls.Add(this.categoryDataGridView);
             this.Controls.Add(this.createCategoryBtn);
             this.Controls.Add(this.isActiveCheckBox);
             this.Controls.Add(this.categoryTextBox);
@@ -230,6 +326,10 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Create Category";
+            this.Load += new System.EventHandler(this.CreateCategoryFrm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.categoryDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iSyncContactdBDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -243,7 +343,12 @@
         private ComponentFactory.Krypton.Toolkit.KryptonCheckBox isActiveCheckBox;
         private ComponentFactory.Krypton.Toolkit.KryptonButton createCategoryBtn;
         private ComponentFactory.Krypton.Toolkit.KryptonPalette kryptonPalette1;
-        private ComponentFactory.Krypton.Toolkit.KryptonLabel lblCategoryListView;
-        private ComponentFactory.Krypton.Toolkit.KryptonListBox categoryListBox;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridView categoryDataGridView;
+        private ISyncContactdBDataSet iSyncContactdBDataSet;
+        private System.Windows.Forms.BindingSource categoryBindingSource;
+        private ISyncContactdBDataSetTableAdapters.CategoryTableAdapter categoryTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn categoryNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn isActiveDataGridViewCheckBoxColumn;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox categorySearchTextBox;
     }
 }

@@ -21,9 +21,6 @@ namespace ISyncAssessmentContactApplication.Forms
             InitializeComponent();
             CategoryDataItems();
         }
-
-        string output = "{0,-35}\t{1,-35}";
-
         private void kryptonTextBox1_TextChanged(object sender, EventArgs e)
         {
 
@@ -73,25 +70,20 @@ namespace ISyncAssessmentContactApplication.Forms
 
         public void CategoryDataItems()
         {
-            SqlConnection conn = new SqlConnection(connStr);
-            string queryCategoryData = "SELECT * FROM dbo.Category";
-            SqlCommand cmd = new SqlCommand(queryCategoryData, conn);
-            SqlDataReader dbr;
-
             try
             {
-                categoryListBox.Items.Clear();
-                categoryListBox.Items.Add(string.Format(output, "Category", "Is Active"));
+                SqlConnection conn = new SqlConnection(connStr);
+
+                string queryCategoryData = "SELECT * FROM dbo.Category";
+                SqlCommand cmd = new SqlCommand(queryCategoryData, conn);
+
+                SqlDataAdapter sdr = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
 
                 conn.Open();
-                dbr = cmd.ExecuteReader();
 
-                while (dbr.Read())
-                {
-                    string categoryName = (string)dbr["CategoryName"];
-                    bool isActive = (bool)dbr["IsActive"];
-                    categoryListBox.Items.Add(string.Format(output, categoryName, isActive));
-                }
+                sdr.Fill(dt);
+                categoryDataGridView.DataSource = dt;
 
                 conn.Close();
             }
@@ -99,6 +91,31 @@ namespace ISyncAssessmentContactApplication.Forms
             {
                 MessageBox.Show(exception.Message);
             }
+        }
+
+        private void CreateCategoryFrm_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'iSyncContactdBDataSet.Category' table. You can move, or remove it, as needed.
+            this.categoryTableAdapter.Fill(this.iSyncContactdBDataSet.Category);
+
+        }
+
+        private void categorySearchTextBox_TextChanged(object sender, EventArgs e)
+        {
+            SqlConnection conn = new SqlConnection(connStr);
+
+            string queryCategoryData = "SELECT * FROM dbo.Category WHERE CategoryName LIKE '"+categorySearchTextBox.Text+"%'";
+            SqlCommand cmd = new SqlCommand(queryCategoryData, conn);
+
+            SqlDataAdapter sdr = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+
+            conn.Open();
+
+            sdr.Fill(dt);
+            categoryDataGridView.DataSource = dt;
+
+            conn.Close();
         }
     }
 }

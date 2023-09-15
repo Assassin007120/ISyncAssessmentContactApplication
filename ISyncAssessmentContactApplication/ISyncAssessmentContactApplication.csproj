@@ -74,6 +74,11 @@
     <Compile Include="Forms\CreateCategory.Designer.cs">
       <DependentUpon>CreateCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="ISyncContactdBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ISyncContactdBDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -87,6 +92,17 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="ISyncContactdBDataSet.xsc">
+      <DependentUpon>ISyncContactdBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ISyncContactdBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ISyncContactdBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ISyncContactdBDataSet.xss">
+      <DependentUpon>ISyncContactdBDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
