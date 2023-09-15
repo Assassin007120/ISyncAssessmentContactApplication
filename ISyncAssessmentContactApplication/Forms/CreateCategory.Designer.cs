@@ -1,6 +1,6 @@
 ﻿namespace ISyncAssessmentContactApplication.Forms
 {
-    partial class CreateCategory
+    partial class CreateCategoryFrm
     {
         /// <summary>
         /// Required designer variable.
@@ -153,7 +153,7 @@
             this.createCategoryBtn.TabIndex = 5;
             this.createCategoryBtn.Values.Text = "Create";
             // 
-            // CreateCategory
+            // CreateCategoryFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -165,8 +165,9 @@
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "CreateCategory";
-            this.Text = "CreateCategory";
+            this.Name = "CreateCategoryFrm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Create Category";
             this.ResumeLayout(false);
             this.PerformLayout();
 

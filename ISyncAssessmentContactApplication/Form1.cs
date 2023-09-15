@@ -28,7 +28,7 @@ namespace ISyncAssessmentContactApplication
 
         private void createCategoryBtn_Click(object sender, EventArgs e)
         {
-            var createCategoryFrm = new CreateCategory();
+            var createCategoryFrm = new CreateCategoryFrm();
 
             createCategoryFrm.ShowDialog();
         }

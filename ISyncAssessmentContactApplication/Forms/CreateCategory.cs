@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ISyncAssessmentContactApplication.Forms
 {
-    public partial class CreateCategory : Form
+    public partial class CreateCategoryFrm : Form
     {
-        public CreateCategory()
+        public CreateCategoryFrm()
         {
             InitializeComponent();
         }
