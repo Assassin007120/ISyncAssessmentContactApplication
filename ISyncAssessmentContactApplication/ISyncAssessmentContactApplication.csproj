@@ -74,6 +74,12 @@
     <Compile Include="Forms\CreateCategory.Designer.cs">
       <DependentUpon>CreateCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\CreateContact.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CreateContact.Designer.cs">
+      <DependentUpon>CreateContact.cs</DependentUpon>
+    </Compile>
     <Compile Include="ISyncContactdBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
