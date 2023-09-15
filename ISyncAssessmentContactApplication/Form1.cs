@@ -22,8 +22,6 @@ namespace ISyncAssessmentContactApplication
             SqlConnection conn = new SqlConnection(connStr);
             conn.Open();
 
-            MessageBox.Show("Connection Successful");
-
             InitializeComponent();
         }
     }
