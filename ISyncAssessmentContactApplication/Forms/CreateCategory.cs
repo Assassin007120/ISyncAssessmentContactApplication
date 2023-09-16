@@ -117,5 +117,10 @@ namespace ISyncAssessmentContactApplication.Forms
 
             conn.Close();
         }
+
+        private void kryptonLabel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

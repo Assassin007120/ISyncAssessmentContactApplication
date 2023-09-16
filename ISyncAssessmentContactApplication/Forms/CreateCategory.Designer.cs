@@ -42,6 +42,7 @@
             this.iSyncContactdBDataSet = new ISyncAssessmentContactApplication.ISyncContactdBDataSet();
             this.categoryTableAdapter = new ISyncAssessmentContactApplication.ISyncContactdBDataSetTableAdapters.CategoryTableAdapter();
             this.categorySearchTextBox = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.categoryDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iSyncContactdBDataSet)).BeginInit();
@@ -71,9 +72,9 @@
             // 
             // categoryTextBox
             // 
-            this.categoryTextBox.Location = new System.Drawing.Point(45, 107);
+            this.categoryTextBox.Location = new System.Drawing.Point(45, 133);
             this.categoryTextBox.Name = "categoryTextBox";
-            this.categoryTextBox.Size = new System.Drawing.Size(379, 40);
+            this.categoryTextBox.Size = new System.Drawing.Size(379, 37);
             this.categoryTextBox.StateCommon.Back.Color1 = System.Drawing.Color.White;
             this.categoryTextBox.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.categoryTextBox.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -87,13 +88,12 @@
             this.categoryTextBox.StateCommon.Content.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.categoryTextBox.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.categoryTextBox.TabIndex = 3;
-            this.categoryTextBox.Text = "Enter Category Name";
             this.categoryTextBox.TextChanged += new System.EventHandler(this.kryptonTextBox1_TextChanged);
             // 
             // isActiveCheckBox
             // 
             this.isActiveCheckBox.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.SuperTip;
-            this.isActiveCheckBox.Location = new System.Drawing.Point(55, 153);
+            this.isActiveCheckBox.Location = new System.Drawing.Point(55, 179);
             this.isActiveCheckBox.Name = "isActiveCheckBox";
             this.isActiveCheckBox.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             this.isActiveCheckBox.Size = new System.Drawing.Size(102, 43);
@@ -108,7 +108,7 @@
             // 
             // createCategoryBtn
             // 
-            this.createCategoryBtn.Location = new System.Drawing.Point(139, 207);
+            this.createCategoryBtn.Location = new System.Drawing.Point(139, 233);
             this.createCategoryBtn.Name = "createCategoryBtn";
             this.createCategoryBtn.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.createCategoryBtn.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -201,6 +201,8 @@
             // 
             // categoryDataGridView
             // 
+            this.categoryDataGridView.AllowUserToAddRows = false;
+            this.categoryDataGridView.AllowUserToDeleteRows = false;
             this.categoryDataGridView.AutoGenerateColumns = false;
             this.categoryDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.categoryDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -257,12 +259,14 @@
             this.categoryNameDataGridViewTextBoxColumn.DataPropertyName = "CategoryName";
             this.categoryNameDataGridViewTextBoxColumn.HeaderText = "CategoryName";
             this.categoryNameDataGridViewTextBoxColumn.Name = "categoryNameDataGridViewTextBoxColumn";
+            this.categoryNameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // isActiveDataGridViewCheckBoxColumn
             // 
             this.isActiveDataGridViewCheckBoxColumn.DataPropertyName = "IsActive";
             this.isActiveDataGridViewCheckBoxColumn.HeaderText = "IsActive";
             this.isActiveDataGridViewCheckBoxColumn.Name = "isActiveDataGridViewCheckBoxColumn";
+            this.isActiveDataGridViewCheckBoxColumn.ReadOnly = true;
             // 
             // categoryBindingSource
             // 
@@ -280,9 +284,9 @@
             // 
             // categorySearchTextBox
             // 
-            this.categorySearchTextBox.Location = new System.Drawing.Point(512, 24);
+            this.categorySearchTextBox.Location = new System.Drawing.Point(528, 24);
             this.categorySearchTextBox.Name = "categorySearchTextBox";
-            this.categorySearchTextBox.Size = new System.Drawing.Size(203, 33);
+            this.categorySearchTextBox.Size = new System.Drawing.Size(187, 33);
             this.categorySearchTextBox.StateActive.Back.Color1 = System.Drawing.Color.White;
             this.categorySearchTextBox.StateActive.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.categorySearchTextBox.StateActive.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -305,12 +309,24 @@
             this.categorySearchTextBox.Text = "Search";
             this.categorySearchTextBox.TextChanged += new System.EventHandler(this.categorySearchTextBox_TextChanged);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label6.Location = new System.Drawing.Point(51, 111);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(136, 19);
+            this.label6.TabIndex = 19;
+            this.label6.Text = "Enter a Category Name";
+            // 
             // CreateCategoryFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.ClientSize = new System.Drawing.Size(770, 284);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.categorySearchTextBox);
             this.Controls.Add(this.categoryDataGridView);
             this.Controls.Add(this.createCategoryBtn);
@@ -350,5 +366,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn categoryNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn isActiveDataGridViewCheckBoxColumn;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox categorySearchTextBox;
+        private System.Windows.Forms.Label label6;
     }
 }
