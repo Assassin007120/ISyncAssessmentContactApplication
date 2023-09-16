@@ -104,7 +104,7 @@ namespace ISyncAssessmentContactApplication.Forms
         {
             SqlConnection conn = new SqlConnection(connStr);
 
-            string queryCategoryData = "SELECT * FROM dbo.Category WHERE CategoryName LIKE '"+categorySearchTextBox.Text+"%'";
+            string queryCategoryData = "SELECT * FROM dbo.Category WHERE CategoryName LIKE '" + categorySearchTextBox.Text + "%'";
             SqlCommand cmd = new SqlCommand(queryCategoryData, conn);
 
             SqlDataAdapter sdr = new SqlDataAdapter(cmd);

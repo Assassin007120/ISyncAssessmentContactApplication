@@ -120,6 +120,10 @@ namespace ISyncAssessmentContactApplication.Forms
                 if (i != 0)
                 {
                     MessageBox.Show("Saved");
+
+                    var contactListFrm = new ContactList();
+
+                    contactListFrm.ShowDialog();
                 }
                 else
                 {

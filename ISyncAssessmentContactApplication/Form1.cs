@@ -35,9 +35,9 @@ namespace ISyncAssessmentContactApplication
 
         private void kryptonButton1_Click(object sender, EventArgs e)
         {
-            var createContactFrm = new CreateContact();
+            var contactListFrm = new ContactList();
 
-            createContactFrm.ShowDialog();
+            contactListFrm.ShowDialog();
         }
     }
 }

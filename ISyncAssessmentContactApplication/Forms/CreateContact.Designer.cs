@@ -37,8 +37,8 @@
             this.contactEmailTxtBox = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.createContactBtn = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.categoryDropdownBox = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
-            this.isActiveContactCheckBox = new ComponentFactory.Krypton.Toolkit.KryptonCheckBox();
             this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
+            this.isActiveContactCheckBox = new ComponentFactory.Krypton.Toolkit.KryptonCheckBox();
             this.contactDateTimePicker = new ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker();
             this.uploadBtn = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.label1 = new System.Windows.Forms.Label();
@@ -399,6 +399,7 @@
             this.Controls.Add(this.lblCreateContactSubLabel);
             this.Controls.Add(this.lblCreateContact);
             this.Name = "CreateContact";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CreateContact";
             this.Load += new System.EventHandler(this.CreateContact_Load);
             ((System.ComponentModel.ISupportInitialize)(this.categoryDropdownBox)).EndInit();

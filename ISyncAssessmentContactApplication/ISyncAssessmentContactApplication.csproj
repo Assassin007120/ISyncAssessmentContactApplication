@@ -70,6 +70,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ContactList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ContactList.Designer.cs">
+      <DependentUpon>ContactList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\CreateCategory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,10 +93,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ISyncContactdBDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="ISyncContactdBDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ISyncContactdBDataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ContactList.resx">
+      <DependentUpon>ContactList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CreateCategory.resx">
       <DependentUpon>CreateCategory.cs</DependentUpon>
@@ -113,6 +127,17 @@
     </None>
     <None Include="ISyncContactdBDataSet.xss">
       <DependentUpon>ISyncContactdBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ISyncContactdBDataSet1.xsc">
+      <DependentUpon>ISyncContactdBDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="ISyncContactdBDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ISyncContactdBDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ISyncContactdBDataSet1.xss">
+      <DependentUpon>ISyncContactdBDataSet1.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
