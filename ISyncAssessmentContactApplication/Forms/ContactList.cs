@@ -135,5 +135,40 @@ namespace ISyncAssessmentContactApplication.Forms
 
             conn.Close();
         }
+
+        private void contactDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (contactDataGridView.CurrentCell.ColumnIndex.Equals(9) && e.RowIndex != -1)
+            {
+                int contactId = Convert.ToInt32(contactDataGridView.Rows[e.RowIndex].Cells[0].Value);
+
+                DeleteContact(contactId);
+            }
+        }
+
+        public void DeleteContact(int contactId)
+        {
+            SqlConnection conn = new SqlConnection(connStr);
+
+            string queryContactToBeDeleted = "DELETE FROM dbo.Contact WHERE Id = " + contactId + "";
+
+            SqlCommand cmd = new SqlCommand(queryContactToBeDeleted, conn);
+
+            conn.Open();
+
+            int i = cmd.ExecuteNonQuery();
+
+            if (i != 0)
+            {
+                MessageBox.Show("Deleted");
+                GetContacts();
+            }
+            else
+            {
+                MessageBox.Show("Failed to delete");
+            }
+
+            conn.Close();
+        }
     }
 }

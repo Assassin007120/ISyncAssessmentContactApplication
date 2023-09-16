@@ -42,6 +42,7 @@
             this.createContactBtn = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.isActiveFilterBtn = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.inactiveFilterBtn = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.categoryIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,6 +51,7 @@
             this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateCreatedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.aCTIVEDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.contactDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.contactBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iSyncContactdBDataSet1)).BeginInit();
@@ -124,6 +126,7 @@
             this.contactDataGridView.AutoGenerateColumns = false;
             this.contactDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.contactDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
             this.categoryIdDataGridViewTextBoxColumn,
             this.firstNameDataGridViewTextBoxColumn,
             this.lastNameDataGridViewTextBoxColumn,
@@ -131,11 +134,12 @@
             this.cellNumberDataGridViewTextBoxColumn,
             this.emailDataGridViewTextBoxColumn,
             this.dateCreatedDataGridViewTextBoxColumn,
-            this.aCTIVEDataGridViewCheckBoxColumn});
+            this.aCTIVEDataGridViewCheckBoxColumn,
+            this.Delete});
             this.contactDataGridView.DataSource = this.contactBindingSource;
             this.contactDataGridView.Location = new System.Drawing.Point(13, 158);
             this.contactDataGridView.Name = "contactDataGridView";
-            this.contactDataGridView.Size = new System.Drawing.Size(842, 341);
+            this.contactDataGridView.Size = new System.Drawing.Size(942, 341);
             this.contactDataGridView.StateCommon.Background.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.contactDataGridView.StateCommon.Background.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.contactDataGridView.StateCommon.Background.ColorAngle = 45F;
@@ -174,6 +178,7 @@
             this.contactDataGridView.StateCommon.HeaderRow.Content.Color2 = System.Drawing.Color.White;
             this.contactDataGridView.StateCommon.HeaderRow.Content.ColorAngle = 45F;
             this.contactDataGridView.TabIndex = 4;
+            this.contactDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.contactDataGridView_CellContentClick);
             // 
             // contactBindingSource
             // 
@@ -201,7 +206,7 @@
             // 
             // contactSearchTextBox
             // 
-            this.contactSearchTextBox.Location = new System.Drawing.Point(652, 119);
+            this.contactSearchTextBox.Location = new System.Drawing.Point(752, 118);
             this.contactSearchTextBox.Name = "contactSearchTextBox";
             this.contactSearchTextBox.Size = new System.Drawing.Size(203, 33);
             this.contactSearchTextBox.StateActive.Back.Color1 = System.Drawing.Color.White;
@@ -288,7 +293,7 @@
             // 
             // isActiveFilterBtn
             // 
-            this.isActiveFilterBtn.Location = new System.Drawing.Point(13, 127);
+            this.isActiveFilterBtn.Location = new System.Drawing.Point(13, 128);
             this.isActiveFilterBtn.Name = "isActiveFilterBtn";
             this.isActiveFilterBtn.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.isActiveFilterBtn.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
@@ -327,7 +332,7 @@
             this.isActiveFilterBtn.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.isActiveFilterBtn.StatePressed.Border.Rounding = 20;
+            this.isActiveFilterBtn.StatePressed.Border.Rounding = 1;
             this.isActiveFilterBtn.StatePressed.Border.Width = 1;
             this.isActiveFilterBtn.StateTracking.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.isActiveFilterBtn.StateTracking.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
@@ -350,7 +355,7 @@
             // 
             // inactiveFilterBtn
             // 
-            this.inactiveFilterBtn.Location = new System.Drawing.Point(95, 126);
+            this.inactiveFilterBtn.Location = new System.Drawing.Point(95, 128);
             this.inactiveFilterBtn.Name = "inactiveFilterBtn";
             this.inactiveFilterBtn.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.inactiveFilterBtn.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
@@ -409,6 +414,14 @@
             this.inactiveFilterBtn.Values.Text = "Inactive";
             this.inactiveFilterBtn.Click += new System.EventHandler(this.inactiveFilterBtn_Click);
             // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
             // categoryIdDataGridViewTextBoxColumn
             // 
             this.categoryIdDataGridViewTextBoxColumn.DataPropertyName = "CategoryId";
@@ -459,12 +472,19 @@
             this.aCTIVEDataGridViewCheckBoxColumn.HeaderText = "Is Active";
             this.aCTIVEDataGridViewCheckBoxColumn.Name = "aCTIVEDataGridViewCheckBoxColumn";
             // 
+            // Delete
+            // 
+            this.Delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Delete.HeaderText = "Delete";
+            this.Delete.Name = "Delete";
+            this.Delete.Text = "Delete Contact";
+            // 
             // ContactList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
-            this.ClientSize = new System.Drawing.Size(867, 512);
+            this.ClientSize = new System.Drawing.Size(972, 512);
             this.Controls.Add(this.inactiveFilterBtn);
             this.Controls.Add(this.isActiveFilterBtn);
             this.Controls.Add(this.createContactBtn);
@@ -506,6 +526,7 @@
         private ComponentFactory.Krypton.Toolkit.KryptonButton createContactBtn;
         private ComponentFactory.Krypton.Toolkit.KryptonButton isActiveFilterBtn;
         private ComponentFactory.Krypton.Toolkit.KryptonButton inactiveFilterBtn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn categoryIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
@@ -514,5 +535,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateCreatedDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn aCTIVEDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewButtonColumn Delete;
     }
 }
