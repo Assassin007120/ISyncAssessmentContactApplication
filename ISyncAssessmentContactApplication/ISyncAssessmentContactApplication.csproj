@@ -62,6 +62,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTOs\EditCategoryDTO.cs" />
     <Compile Include="DTOs\EditContactDTO.cs" />
     <Compile Include="DTOs\ImageDTO.cs" />
     <Compile Include="DTOs\ValidationMessageDTO.cs" />
@@ -98,6 +99,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ISyncContactdBDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ISyncContactdBDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ISyncContactdBDataSet2.xsd</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -139,6 +145,17 @@
     </None>
     <None Include="ISyncContactdBDataSet1.xss">
       <DependentUpon>ISyncContactdBDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="ISyncContactdBDataSet2.xsc">
+      <DependentUpon>ISyncContactdBDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="ISyncContactdBDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ISyncContactdBDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ISyncContactdBDataSet2.xss">
+      <DependentUpon>ISyncContactdBDataSet2.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

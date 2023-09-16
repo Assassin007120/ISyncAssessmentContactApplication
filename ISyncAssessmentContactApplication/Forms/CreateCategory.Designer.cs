@@ -36,16 +36,23 @@
             this.createCategoryBtn = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
             this.categoryDataGridView = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.categoryNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.isActiveDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.iSyncContactdBDataSet = new ISyncAssessmentContactApplication.ISyncContactdBDataSet();
             this.categoryTableAdapter = new ISyncAssessmentContactApplication.ISyncContactdBDataSetTableAdapters.CategoryTableAdapter();
             this.categorySearchTextBox = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.iSyncContactdBDataSet2 = new ISyncAssessmentContactApplication.ISyncContactdBDataSet2();
+            this.categoryBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.categoryTableAdapter1 = new ISyncAssessmentContactApplication.ISyncContactdBDataSet2TableAdapters.CategoryTableAdapter();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.categoryNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isActiveDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.categoryDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iSyncContactdBDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iSyncContactdBDataSet2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -206,15 +213,16 @@
             this.categoryDataGridView.AutoGenerateColumns = false;
             this.categoryDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.categoryDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
             this.categoryNameDataGridViewTextBoxColumn,
-            this.isActiveDataGridViewCheckBoxColumn});
-            this.categoryDataGridView.DataSource = this.categoryBindingSource;
+            this.isActiveDataGridViewCheckBoxColumn,
+            this.Edit});
+            this.categoryDataGridView.DataSource = this.categoryBindingSource1;
             this.categoryDataGridView.Location = new System.Drawing.Point(473, 65);
             this.categoryDataGridView.Name = "categoryDataGridView";
             this.categoryDataGridView.Palette = this.kryptonPalette1;
             this.categoryDataGridView.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
-            this.categoryDataGridView.ReadOnly = true;
-            this.categoryDataGridView.Size = new System.Drawing.Size(242, 185);
+            this.categoryDataGridView.Size = new System.Drawing.Size(291, 185);
             this.categoryDataGridView.StateCommon.Background.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.categoryDataGridView.StateCommon.Background.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.categoryDataGridView.StateCommon.Background.ColorAngle = 45F;
@@ -253,20 +261,7 @@
             this.categoryDataGridView.StateCommon.HeaderRow.Content.Color2 = System.Drawing.Color.White;
             this.categoryDataGridView.StateCommon.HeaderRow.Content.ColorAngle = 45F;
             this.categoryDataGridView.TabIndex = 8;
-            // 
-            // categoryNameDataGridViewTextBoxColumn
-            // 
-            this.categoryNameDataGridViewTextBoxColumn.DataPropertyName = "CategoryName";
-            this.categoryNameDataGridViewTextBoxColumn.HeaderText = "CategoryName";
-            this.categoryNameDataGridViewTextBoxColumn.Name = "categoryNameDataGridViewTextBoxColumn";
-            this.categoryNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // isActiveDataGridViewCheckBoxColumn
-            // 
-            this.isActiveDataGridViewCheckBoxColumn.DataPropertyName = "IsActive";
-            this.isActiveDataGridViewCheckBoxColumn.HeaderText = "IsActive";
-            this.isActiveDataGridViewCheckBoxColumn.Name = "isActiveDataGridViewCheckBoxColumn";
-            this.isActiveDataGridViewCheckBoxColumn.ReadOnly = true;
+            this.categoryDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.categoryDataGridView_CellContentClick);
             // 
             // categoryBindingSource
             // 
@@ -284,7 +279,7 @@
             // 
             // categorySearchTextBox
             // 
-            this.categorySearchTextBox.Location = new System.Drawing.Point(528, 24);
+            this.categorySearchTextBox.Location = new System.Drawing.Point(577, 26);
             this.categorySearchTextBox.Name = "categorySearchTextBox";
             this.categorySearchTextBox.Size = new System.Drawing.Size(187, 33);
             this.categorySearchTextBox.StateActive.Back.Color1 = System.Drawing.Color.White;
@@ -320,12 +315,53 @@
             this.label6.TabIndex = 19;
             this.label6.Text = "Enter a Category Name";
             // 
+            // iSyncContactdBDataSet2
+            // 
+            this.iSyncContactdBDataSet2.DataSetName = "ISyncContactdBDataSet2";
+            this.iSyncContactdBDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // categoryBindingSource1
+            // 
+            this.categoryBindingSource1.DataMember = "Category";
+            this.categoryBindingSource1.DataSource = this.iSyncContactdBDataSet2;
+            // 
+            // categoryTableAdapter1
+            // 
+            this.categoryTableAdapter1.ClearBeforeFill = true;
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
+            // categoryNameDataGridViewTextBoxColumn
+            // 
+            this.categoryNameDataGridViewTextBoxColumn.DataPropertyName = "CategoryName";
+            this.categoryNameDataGridViewTextBoxColumn.HeaderText = "CategoryName";
+            this.categoryNameDataGridViewTextBoxColumn.Name = "categoryNameDataGridViewTextBoxColumn";
+            // 
+            // isActiveDataGridViewCheckBoxColumn
+            // 
+            this.isActiveDataGridViewCheckBoxColumn.DataPropertyName = "IsActive";
+            this.isActiveDataGridViewCheckBoxColumn.HeaderText = "IsActive";
+            this.isActiveDataGridViewCheckBoxColumn.Name = "isActiveDataGridViewCheckBoxColumn";
+            // 
+            // Edit
+            // 
+            this.Edit.FillWeight = 50F;
+            this.Edit.HeaderText = "Edit";
+            this.Edit.Name = "Edit";
+            this.Edit.Width = 50;
+            // 
             // CreateCategoryFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
-            this.ClientSize = new System.Drawing.Size(770, 284);
+            this.ClientSize = new System.Drawing.Size(776, 284);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.categorySearchTextBox);
             this.Controls.Add(this.categoryDataGridView);
@@ -346,6 +382,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.categoryDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iSyncContactdBDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iSyncContactdBDataSet2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -363,9 +401,14 @@
         private ISyncContactdBDataSet iSyncContactdBDataSet;
         private System.Windows.Forms.BindingSource categoryBindingSource;
         private ISyncContactdBDataSetTableAdapters.CategoryTableAdapter categoryTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn categoryNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn isActiveDataGridViewCheckBoxColumn;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox categorySearchTextBox;
         private System.Windows.Forms.Label label6;
+        private ISyncContactdBDataSet2 iSyncContactdBDataSet2;
+        private System.Windows.Forms.BindingSource categoryBindingSource1;
+        private ISyncContactdBDataSet2TableAdapters.CategoryTableAdapter categoryTableAdapter1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn categoryNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn isActiveDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewButtonColumn Edit;
     }
 }

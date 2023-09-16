@@ -10,12 +10,14 @@ using ComponentFactory.Krypton.Toolkit;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Configuration;
+using ISyncAssessmentContactApplication.DTOs;
 
 namespace ISyncAssessmentContactApplication.Forms
 {
     public partial class CreateCategoryFrm : KryptonForm
     {
         string connStr = ConfigurationManager.ConnectionStrings["ApplicationConnectionString"].ConnectionString;
+        EditCategoryDTO editCategoryDTO = new EditCategoryDTO();
         public CreateCategoryFrm()
         {
             InitializeComponent();
@@ -95,6 +97,8 @@ namespace ISyncAssessmentContactApplication.Forms
 
         private void CreateCategoryFrm_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'iSyncContactdBDataSet2.Category' table. You can move, or remove it, as needed.
+            this.categoryTableAdapter1.Fill(this.iSyncContactdBDataSet2.Category);
             // TODO: This line of code loads data into the 'iSyncContactdBDataSet.Category' table. You can move, or remove it, as needed.
             this.categoryTableAdapter.Fill(this.iSyncContactdBDataSet.Category);
 
@@ -121,6 +125,41 @@ namespace ISyncAssessmentContactApplication.Forms
         private void kryptonLabel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void categoryDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (categoryDataGridView.CurrentCell.ColumnIndex.Equals(3) && e.RowIndex != -1) 
+            {
+                editCategoryDTO.Id = Convert.ToInt32(categoryDataGridView.Rows[e.RowIndex].Cells[0].Value);
+                editCategoryDTO.CategoryName = categoryDataGridView.Rows[e.RowIndex].Cells[1].Value.ToString();
+                editCategoryDTO.isActive = Convert.ToInt32(categoryDataGridView.Rows[e.RowIndex].Cells[2].Value);
+
+                EditCategory(editCategoryDTO);
+            }
+        }
+
+        private void EditCategory(EditCategoryDTO editCategoryDTO)
+        {
+            SqlConnection conn = new SqlConnection(connStr);
+
+            string queryCategoryToEdited = "UPDATE dbo.Category SET CategoryName = '" + editCategoryDTO.CategoryName + "', IsActive = " + editCategoryDTO.isActive + " WHERE Id = " + editCategoryDTO.Id + "";
+
+            SqlCommand cmd = new SqlCommand(queryCategoryToEdited, conn);
+
+            conn.Open();
+
+            int i = cmd.ExecuteNonQuery();
+
+            if (i != 0)
+            {
+                MessageBox.Show("Success");
+                CategoryDataItems();
+            }
+            else
+            {
+                MessageBox.Show("Failed");
+            }
         }
     }
 }
