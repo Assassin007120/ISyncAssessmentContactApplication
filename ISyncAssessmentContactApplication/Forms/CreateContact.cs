@@ -12,6 +12,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.IO;
 using ISyncAssessmentContactApplication.DTOs;
+using System.Text.RegularExpressions;
 
 namespace ISyncAssessmentContactApplication.Forms
 {
@@ -36,22 +37,29 @@ namespace ISyncAssessmentContactApplication.Forms
 
         public void PopulateCategoryComboBox()
         {
-            SqlConnection conn = new SqlConnection(connStr);
-            conn.Open();
-
-            string query = "SELECT * FROM dbo.Category WHERE IsActive = '1'";
-
-            SqlCommand cmd = new SqlCommand(query, conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                categoryDropdownBox.Items.Add(reader["CategoryName"].ToString());
-                categoryDropdownBox.DisplayMember = (reader["CategoryName"].ToString());
-                categoryDropdownBox.ValueMember = (reader["Id"].ToString());
-            }
+                SqlConnection conn = new SqlConnection(connStr);
+                conn.Open();
 
-            conn.Close();
+                string query = "SELECT * FROM dbo.Category WHERE IsActive = '1'";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    categoryDropdownBox.Items.Add(reader["CategoryName"].ToString());
+                    categoryDropdownBox.DisplayMember = (reader["CategoryName"].ToString());
+                    categoryDropdownBox.ValueMember = (reader["Id"].ToString());
+                }
+
+                conn.Close();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, "Exception");
+            }
         }
 
         private void label7_Click(object sender, EventArgs e)
@@ -61,38 +69,52 @@ namespace ISyncAssessmentContactApplication.Forms
 
         private void categoryDropdownBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            SqlConnection conn = new SqlConnection(connStr);
-            conn.Open();
-
-            string categoryQuery = "SELECT Id FROM dbo.Category WHERE CategoryName = '" + categoryDropdownBox.SelectedItem + "'";
-            SqlCommand cmd = new SqlCommand(categoryQuery, conn);
-
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                categoryId = Convert.ToInt32(reader[0]);
-            }
+                SqlConnection conn = new SqlConnection(connStr);
+                conn.Open();
 
-            conn.Close();
+                string categoryQuery = "SELECT Id FROM dbo.Category WHERE CategoryName = '" + categoryDropdownBox.SelectedItem + "'";
+                SqlCommand cmd = new SqlCommand(categoryQuery, conn);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    categoryId = Convert.ToInt32(reader[0]);
+                }
+
+                conn.Close();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, "Exception");
+            }
         }
 
         private void createContactBtn_Click(object sender, EventArgs e)
         {
-            SqlConnection conn = new SqlConnection(connStr);
-            conn.Open();
-
             try
             {
+                SqlConnection conn = new SqlConnection(connStr);
+                conn.Open();
+
                 string email = contactEmailTxtBox.Text;
                 string fname = contactFirstNameTxtBox.Text;
                 string lname = contactLastNameTxtbox.Text;
+
+                messageDTO = ValidateEmailAddress(email);
+
+                if (messageDTO.IsValid == false)
+                {
+                    MessageBox.Show(messageDTO.Message, "Error");
+                }
 
                 messageDTO = ValidateRequiredFormFields(email, fname, lname);
 
                 if (messageDTO.IsValid == false)
                 {
-                    MessageBox.Show(messageDTO.Message);
+                    MessageBox.Show(messageDTO.Message, "Error");
                 }
 
                 string cellNumber = contactCellTxtBox.Text;
@@ -119,7 +141,7 @@ namespace ISyncAssessmentContactApplication.Forms
 
                 if (i != 0)
                 {
-                    MessageBox.Show("Saved");
+                    MessageBox.Show("Contact Created!", "Success");
 
                     var contactListFrm = new ContactList();
 
@@ -127,47 +149,63 @@ namespace ISyncAssessmentContactApplication.Forms
                 }
                 else
                 {
-                    MessageBox.Show("Failed");
+                    MessageBox.Show("Contact Failed to create!", "Error");
                 }
 
                 conn.Close();
             }
             catch (Exception exception)
             {
-                MessageBox.Show(exception.Message);
+                MessageBox.Show(exception.Message, "Exception");
             }
         }
 
         private void uploadBtn_Click(object sender, EventArgs e)
         {
-            GetImage();
+            try
+            {
+                GetImage();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, "Exception");
+            }
         }
 
         private byte[] GetImage()
         {
-            string sFile;
-            OpenFileDialog openFileDialogBox = new OpenFileDialog();
-
-            byte[] imgByte = null;
-
-            openFileDialogBox.Filter = "Image File (*.jpg;*.bmp;*.gif)|*.jpg;*.bmp;*.gif";
-
-            if (openFileDialogBox.ShowDialog() == DialogResult.OK)
+            try
             {
-                sFile = openFileDialogBox.FileName;
-                imageBox.Image = System.Drawing.Bitmap.FromFile(sFile);
-                imageBox.SizeMode = PictureBoxSizeMode.CenterImage;
+                string sFile;
+                OpenFileDialog openFileDialogBox = new OpenFileDialog();
 
-                using (MemoryStream mStream = new MemoryStream())
+                byte[] imgByte = null;
+
+                openFileDialogBox.Filter = "Image File (*.jpg;*.bmp;*.gif)|*.jpg;*.bmp;*.gif";
+
+                if (openFileDialogBox.ShowDialog() == DialogResult.OK)
                 {
-                    imageBox.Image.Save(mStream, imageBox.Image.RawFormat);
-                    imgByte = mStream.ToArray();
+                    sFile = openFileDialogBox.FileName;
+                    imageBox.Image = System.Drawing.Bitmap.FromFile(sFile);
+                    imageBox.SizeMode = PictureBoxSizeMode.CenterImage;
+
+                    using (MemoryStream mStream = new MemoryStream())
+                    {
+                        imageBox.Image.Save(mStream, imageBox.Image.RawFormat);
+                        imgByte = mStream.ToArray();
+                    }
                 }
+
+                imageDTO.imageByte = imgByte;
+
+                return imgByte;
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, "Exception");
             }
 
-            imageDTO.imageByte = imgByte;
-
-            return imgByte;
+            return null;
         }
 
         private void contactLastNameTxtbox_TextChanged(object sender, EventArgs e)
@@ -175,36 +213,82 @@ namespace ISyncAssessmentContactApplication.Forms
 
         }
 
+        private ValidationMessageDTO ValidateEmailAddress(string email)
+        {
+            ValidationMessageDTO validationDTO = new ValidationMessageDTO();
+            try
+            {
+                if (email != null)
+                {
+                    Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+
+                    Match match = regex.Match(email);
+
+                    if (match.Success)
+                    {
+                        validationDTO.IsValid = true;
+                        validationDTO.Message = "Email Address is valid";
+
+                        return validationDTO;
+                    }
+                    else
+                    {
+                        validationDTO.IsValid = false;
+                        validationDTO.Message = "Email Address is failed validation";
+                    }
+                }
+
+                return validationDTO;
+            }
+            catch (Exception exception)
+            {
+                validationDTO.IsValid = false;
+                validationDTO.Message = exception.Message;
+
+                return validationDTO;
+            }
+        }
+
         private ValidationMessageDTO ValidateRequiredFormFields(string email, string fname, string lname)
         {
-            if (email == "") 
+            try
             {
-                messageDTO.IsValid = false;
-                messageDTO.Message = "Invalid User Input. Email cannot be empty.";
+                if (email == "")
+                {
+                    messageDTO.IsValid = false;
+                    messageDTO.Message = "Invalid User Input. Email cannot be empty.";
+
+                    return messageDTO;
+                }
+
+                if (fname == "")
+                {
+                    messageDTO.IsValid = false;
+                    messageDTO.Message = "Invalid User Input. First Name cannot be empty.";
+
+                    return messageDTO;
+                }
+
+                if (lname == "")
+                {
+                    messageDTO.IsValid = false;
+                    messageDTO.Message = "Invalid User Input. Last Name cannot be empty.";
+
+                    return messageDTO;
+                }
+
+                messageDTO.IsValid = true;
+                messageDTO.Message = "Validation Successful";
 
                 return messageDTO;
             }
-
-            if (fname == "")
+            catch (Exception exception)
             {
                 messageDTO.IsValid = false;
-                messageDTO.Message = "Invalid User Input. First Name cannot be empty.";
+                messageDTO.Message = exception.Message;
 
                 return messageDTO;
-            }
-
-            if (lname == "")
-            {
-                messageDTO.IsValid = false;
-                messageDTO.Message = "Invalid User Input. Last Name cannot be empty.";
-
-                return messageDTO;
-            }
-
-            messageDTO.IsValid = true;
-            messageDTO.Message = "Validation Successful";
-
-            return messageDTO;    
+            }  
         }
     }
 }

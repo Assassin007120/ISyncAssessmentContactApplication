@@ -207,6 +207,9 @@
             this.kryptonButton1.StateTracking.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             this.kryptonButton1.StateTracking.Border.Rounding = 20;
             this.kryptonButton1.StateTracking.Border.Width = 1;
+            this.kryptonButton1.StateTracking.Content.ShortText.Color1 = System.Drawing.Color.White;
+            this.kryptonButton1.StateTracking.Content.ShortText.Color2 = System.Drawing.Color.White;
+            this.kryptonButton1.StateTracking.Content.ShortText.ColorAngle = 45F;
             this.kryptonButton1.TabIndex = 3;
             this.kryptonButton1.Values.Text = "View Contacts";
             this.kryptonButton1.Click += new System.EventHandler(this.kryptonButton1_Click);

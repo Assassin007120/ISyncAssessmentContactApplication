@@ -58,25 +58,29 @@ namespace ISyncAssessmentContactApplication.Forms
 
         private void contactSearchTextBox_TextChanged(object sender, EventArgs e)
         {
-            SqlConnection conn = new SqlConnection(connStr);
+            try
+            {
+                SqlConnection conn = new SqlConnection(connStr);
 
-            string queryContactData = "SELECT * FROM dbo.Contact WHERE FirstName LIKE '" + contactSearchTextBox.Text + "%'";
-            SqlCommand cmd = new SqlCommand(queryContactData, conn);
+                string queryContactData = "SELECT * FROM dbo.Contact WHERE FirstName LIKE '" + contactSearchTextBox.Text + "%'";
+                SqlCommand cmd = new SqlCommand(queryContactData, conn);
 
-            SqlDataAdapter sdr = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            BindingSource bs = new BindingSource();
+                SqlDataAdapter sdr = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                BindingSource bs = new BindingSource();
 
-            conn.Open();
+                conn.Open();
 
-            sdr.Fill(dt);
-            bs.DataSource = contactDataGridView.DataSource;
-            bs.Filter = contactDataGridView.Columns[1].HeaderText.ToString() + "LIKE '%" + contactSearchTextBox.Text + "%'";
-            contactDataGridView.DataSource = dt;
+                sdr.Fill(dt);
+                bs.DataSource = contactDataGridView.DataSource;
+                contactDataGridView.DataSource = dt;
 
-            //contactDataGridView.DataSource = dt;
-
-            conn.Close();
+                conn.Close();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, "Exception");
+            }
         }
 
         private void createContactBtn_Click(object sender, EventArgs e)
@@ -88,128 +92,177 @@ namespace ISyncAssessmentContactApplication.Forms
 
         private void isActiveFilterBtn_Click(object sender, EventArgs e)
         {
-            isActiveFilter();
+            try
+            {
+                isActiveFilter();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, "Exception");
+            }
         }
 
         public void isActiveFilter()
         {
-            SqlConnection conn = new SqlConnection(connStr);
+            try
+            {
+                SqlConnection conn = new SqlConnection(connStr);
 
-            string queryContactFilteredDate = "SELECT * FROM dbo.Contact WHERE ACTIVE = 1";
+                string queryContactFilteredDate = "SELECT * FROM dbo.Contact WHERE ACTIVE = 1";
 
-            SqlCommand cmd = new SqlCommand(queryContactFilteredDate, conn);
+                SqlCommand cmd = new SqlCommand(queryContactFilteredDate, conn);
 
-            SqlDataAdapter sdr = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            BindingSource bs = new BindingSource();
+                SqlDataAdapter sdr = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                BindingSource bs = new BindingSource();
 
-            conn.Open();
+                conn.Open();
 
-            sdr.Fill(dt);
-            bs.DataSource = contactDataGridView.DataSource;
-            contactDataGridView.DataSource = dt;
+                sdr.Fill(dt);
+                bs.DataSource = contactDataGridView.DataSource;
+                contactDataGridView.DataSource = dt;
 
-            conn.Close();
+                conn.Close();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, "Exception");
+            }
         }
 
         private void inactiveFilterBtn_Click(object sender, EventArgs e)
         {
-            isInactiveFilter();
+            try
+            {
+                isInactiveFilter();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, "Exception");
+            }
         }
 
         public void isInactiveFilter()
         {
-            SqlConnection conn = new SqlConnection(connStr);
+            try
+            {
+                SqlConnection conn = new SqlConnection(connStr);
 
-            string queryContactFilteredData = "SELECT * FROM dbo.Contact WHERE ACTIVE = 0";
+                string queryContactFilteredData = "SELECT * FROM dbo.Contact WHERE ACTIVE = 0";
 
-            SqlCommand cmd = new SqlCommand(queryContactFilteredData, conn);
+                SqlCommand cmd = new SqlCommand(queryContactFilteredData, conn);
 
-            SqlDataAdapter sdr = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            BindingSource bs = new BindingSource();
+                SqlDataAdapter sdr = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                BindingSource bs = new BindingSource();
 
-            conn.Open();
+                conn.Open();
 
-            sdr.Fill(dt);
-            bs.DataSource = contactDataGridView.DataSource;
-            contactDataGridView.DataSource = dt;
+                sdr.Fill(dt);
+                bs.DataSource = contactDataGridView.DataSource;
+                contactDataGridView.DataSource = dt;
 
-            conn.Close();
+                conn.Close();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, "Exception");
+            }
         }
 
         private void contactDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            //Delete Contact
-            if (contactDataGridView.CurrentCell.ColumnIndex.Equals(9) && e.RowIndex != -1)
+            try
             {
-                int contactId = Convert.ToInt32(contactDataGridView.Rows[e.RowIndex].Cells[0].Value);
+                //Delete Contact
+                if (contactDataGridView.CurrentCell.ColumnIndex.Equals(9) && e.RowIndex != -1)
+                {
+                    int contactId = Convert.ToInt32(contactDataGridView.Rows[e.RowIndex].Cells[0].Value);
 
-                DeleteContact(contactId);
+                    DeleteContact(contactId);
+                }
+
+                //Edit Contact
+                if (contactDataGridView.CurrentCell.ColumnIndex.Equals(10) && e.RowIndex != -1)
+                {
+                    editContactDTO.Id = Convert.ToInt32(contactDataGridView.Rows[e.RowIndex].Cells[0].Value);
+                    editContactDTO.CategoryId = Convert.ToInt32(contactDataGridView.Rows[e.RowIndex].Cells[1].Value);
+                    editContactDTO.FirstName = contactDataGridView.Rows[e.RowIndex].Cells[2].Value.ToString();
+                    editContactDTO.LastName = contactDataGridView.Rows[e.RowIndex].Cells[3].Value.ToString();
+                    editContactDTO.DateOfBirth = Convert.ToDateTime(contactDataGridView.Rows[e.RowIndex].Cells[4].Value);
+                    editContactDTO.CellNumber = contactDataGridView.Rows[e.RowIndex].Cells[5].Value.ToString();
+                    editContactDTO.Email = contactDataGridView.Rows[e.RowIndex].Cells[6].Value.ToString();
+                    editContactDTO.IsActive = Convert.ToInt32(contactDataGridView.Rows[e.RowIndex].Cells[8].Value);
+
+                    EditContact(editContactDTO);
+                }
             }
-
-            //Edit Contact
-            if (contactDataGridView.CurrentCell.ColumnIndex.Equals(10) && e.RowIndex != -1)
+            catch (Exception exception)
             {
-                editContactDTO.Id = Convert.ToInt32(contactDataGridView.Rows[e.RowIndex].Cells[0].Value);
-                editContactDTO.CategoryId = Convert.ToInt32(contactDataGridView.Rows[e.RowIndex].Cells[1].Value);
-                editContactDTO.FirstName = contactDataGridView.Rows[e.RowIndex].Cells[2].Value.ToString();
-                editContactDTO.LastName = contactDataGridView.Rows[e.RowIndex].Cells[3].Value.ToString();
-                editContactDTO.DateOfBirth = Convert.ToDateTime(contactDataGridView.Rows[e.RowIndex].Cells[4].Value);
-                editContactDTO.CellNumber = contactDataGridView.Rows[e.RowIndex].Cells[5].Value.ToString();
-                editContactDTO.Email = contactDataGridView.Rows[e.RowIndex].Cells[6].Value.ToString();
-                editContactDTO.IsActive = Convert.ToInt32(contactDataGridView.Rows[e.RowIndex].Cells[8].Value);
-
-                EditContact(editContactDTO);
+                MessageBox.Show(exception.Message, "Exception");
             }
         }
 
         private void EditContact(EditContactDTO editContactDTO)
         {
-            SqlConnection conn = new SqlConnection(connStr);
-
-            string queryContactToBeEdited = "UPDATE dbo.Contact SET CategoryId = " + editContactDTO.CategoryId + ", FirstName = '" + editContactDTO.FirstName + "', LastName = '" + editContactDTO.LastName + "', DateOfBirth = '" + editContactDTO.DateOfBirth + "', CellNumber = '" + editContactDTO.CellNumber+ "', Email = '" + editContactDTO.Email+ "', ACTIVE = " + editContactDTO.IsActive + " WHERE Id = " + editContactDTO.Id + "";
-
-            SqlCommand cmd = new SqlCommand(queryContactToBeEdited, conn);
-
-            conn.Open();
-
-            int i = cmd.ExecuteNonQuery();
-
-            if (i != 0)
+            try
             {
-                MessageBox.Show("Change Saved");
-                GetContacts();
+                SqlConnection conn = new SqlConnection(connStr);
+
+                string queryContactToBeEdited = "UPDATE dbo.Contact SET CategoryId = " + editContactDTO.CategoryId + ", FirstName = '" + editContactDTO.FirstName + "', LastName = '" + editContactDTO.LastName + "', DateOfBirth = '" + editContactDTO.DateOfBirth + "', CellNumber = '" + editContactDTO.CellNumber + "', Email = '" + editContactDTO.Email + "', ACTIVE = " + editContactDTO.IsActive + " WHERE Id = " + editContactDTO.Id + "";
+
+                SqlCommand cmd = new SqlCommand(queryContactToBeEdited, conn);
+
+                conn.Open();
+
+                int i = cmd.ExecuteNonQuery();
+
+                if (i != 0)
+                {
+                    MessageBox.Show("Contact Updated!", "Success");
+                    GetContacts();
+                }
+                else
+                {
+                    MessageBox.Show("Contact Failed to update!", "Error");
+                }
             }
-            else
+            catch (Exception exception)
             {
-                MessageBox.Show("Failed");
+                MessageBox.Show(exception.Message, "Exception");
             }
         }
 
         private void DeleteContact(int contactId)
         {
-            SqlConnection conn = new SqlConnection(connStr);
-
-            string queryContactToBeDeleted = "DELETE FROM dbo.Contact WHERE Id = " + contactId + "";
-
-            SqlCommand cmd = new SqlCommand(queryContactToBeDeleted, conn);
-
-            conn.Open();
-
-            int i = cmd.ExecuteNonQuery();
-
-            if (i != 0)
+            try
             {
-                MessageBox.Show("Deleted");
-                GetContacts();
-            }
-            else
-            {
-                MessageBox.Show("Failed to delete");
-            }
+                SqlConnection conn = new SqlConnection(connStr);
 
-            conn.Close();
+                string queryContactToBeDeleted = "DELETE FROM dbo.Contact WHERE Id = " + contactId + "";
+
+                SqlCommand cmd = new SqlCommand(queryContactToBeDeleted, conn);
+
+                conn.Open();
+
+                int i = cmd.ExecuteNonQuery();
+
+                if (i != 0)
+                {
+                    MessageBox.Show("Contact deleted!", "Success");
+                    GetContacts();
+                }
+                else
+                {
+                    MessageBox.Show("Contact to delete", "Error");
+                }
+
+                conn.Close();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, "Exception");
+            }
         }
     }
 }

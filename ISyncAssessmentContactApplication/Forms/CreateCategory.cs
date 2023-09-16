@@ -54,12 +54,12 @@ namespace ISyncAssessmentContactApplication.Forms
 
                 if (i != 0)
                 {
-                    MessageBox.Show("Saved Successfully");
+                    MessageBox.Show("Category saved!", "Success");
                     CategoryDataItems();
                 }
                 else
                 {
-                    MessageBox.Show("Failed to save data");
+                    MessageBox.Show("Failed to Save!", "Error");
                 }
 
                 conn.Close();
@@ -91,7 +91,7 @@ namespace ISyncAssessmentContactApplication.Forms
             }
             catch (Exception exception)
             {
-                MessageBox.Show(exception.Message);
+                MessageBox.Show(exception.Message, "Exception");
             }
         }
 
@@ -106,20 +106,27 @@ namespace ISyncAssessmentContactApplication.Forms
 
         private void categorySearchTextBox_TextChanged(object sender, EventArgs e)
         {
-            SqlConnection conn = new SqlConnection(connStr);
+            try
+            {
+                SqlConnection conn = new SqlConnection(connStr);
 
-            string queryCategoryData = "SELECT * FROM dbo.Category WHERE CategoryName LIKE '" + categorySearchTextBox.Text + "%'";
-            SqlCommand cmd = new SqlCommand(queryCategoryData, conn);
+                string queryCategoryData = "SELECT * FROM dbo.Category WHERE CategoryName LIKE '" + categorySearchTextBox.Text + "%'";
+                SqlCommand cmd = new SqlCommand(queryCategoryData, conn);
 
-            SqlDataAdapter sdr = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
+                SqlDataAdapter sdr = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
 
-            conn.Open();
+                conn.Open();
 
-            sdr.Fill(dt);
-            categoryDataGridView.DataSource = dt;
+                sdr.Fill(dt);
+                categoryDataGridView.DataSource = dt;
 
-            conn.Close();
+                conn.Close();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, "Exception");
+            }
         }
 
         private void kryptonLabel1_Paint(object sender, PaintEventArgs e)
@@ -129,36 +136,50 @@ namespace ISyncAssessmentContactApplication.Forms
 
         private void categoryDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (categoryDataGridView.CurrentCell.ColumnIndex.Equals(3) && e.RowIndex != -1) 
+            try
             {
-                editCategoryDTO.Id = Convert.ToInt32(categoryDataGridView.Rows[e.RowIndex].Cells[0].Value);
-                editCategoryDTO.CategoryName = categoryDataGridView.Rows[e.RowIndex].Cells[1].Value.ToString();
-                editCategoryDTO.isActive = Convert.ToInt32(categoryDataGridView.Rows[e.RowIndex].Cells[2].Value);
+                if (categoryDataGridView.CurrentCell.ColumnIndex.Equals(3) && e.RowIndex != -1)
+                {
+                    editCategoryDTO.Id = Convert.ToInt32(categoryDataGridView.Rows[e.RowIndex].Cells[0].Value);
+                    editCategoryDTO.CategoryName = categoryDataGridView.Rows[e.RowIndex].Cells[1].Value.ToString();
+                    editCategoryDTO.isActive = Convert.ToInt32(categoryDataGridView.Rows[e.RowIndex].Cells[2].Value);
 
-                EditCategory(editCategoryDTO);
+                    EditCategory(editCategoryDTO);
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, "Exception");
             }
         }
 
         private void EditCategory(EditCategoryDTO editCategoryDTO)
         {
-            SqlConnection conn = new SqlConnection(connStr);
-
-            string queryCategoryToEdited = "UPDATE dbo.Category SET CategoryName = '" + editCategoryDTO.CategoryName + "', IsActive = " + editCategoryDTO.isActive + " WHERE Id = " + editCategoryDTO.Id + "";
-
-            SqlCommand cmd = new SqlCommand(queryCategoryToEdited, conn);
-
-            conn.Open();
-
-            int i = cmd.ExecuteNonQuery();
-
-            if (i != 0)
+            try
             {
-                MessageBox.Show("Success");
-                CategoryDataItems();
+                SqlConnection conn = new SqlConnection(connStr);
+
+                string queryCategoryToEdited = "UPDATE dbo.Category SET CategoryName = '" + editCategoryDTO.CategoryName + "', IsActive = " + editCategoryDTO.isActive + " WHERE Id = " + editCategoryDTO.Id + "";
+
+                SqlCommand cmd = new SqlCommand(queryCategoryToEdited, conn);
+
+                conn.Open();
+
+                int i = cmd.ExecuteNonQuery();
+
+                if (i != 0)
+                {
+                    MessageBox.Show("Category Updated!", "Success");
+                    CategoryDataItems();
+                }
+                else
+                {
+                    MessageBox.Show("Category failed to update!", "Error");
+                }
             }
-            else
+            catch (Exception exception)
             {
-                MessageBox.Show("Failed");
+                MessageBox.Show(exception.Message, "Exception");
             }
         }
     }
