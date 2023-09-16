@@ -40,7 +40,6 @@
             this.isActiveContactCheckBox = new ComponentFactory.Krypton.Toolkit.KryptonCheckBox();
             this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
             this.contactDateTimePicker = new ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker();
-            this.imageFileOpenDialog = new System.Windows.Forms.OpenFileDialog();
             this.uploadBtn = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -49,7 +48,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.imageBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.categoryDropdownBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageBox)).BeginInit();
             this.SuspendLayout();
             // 
             // lblCreateContact
@@ -78,7 +79,7 @@
             // 
             this.contactFirstNameTxtBox.Location = new System.Drawing.Point(30, 178);
             this.contactFirstNameTxtBox.Name = "contactFirstNameTxtBox";
-            this.contactFirstNameTxtBox.Size = new System.Drawing.Size(379, 40);
+            this.contactFirstNameTxtBox.Size = new System.Drawing.Size(379, 37);
             this.contactFirstNameTxtBox.StateCommon.Back.Color1 = System.Drawing.Color.White;
             this.contactFirstNameTxtBox.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.contactFirstNameTxtBox.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -91,14 +92,13 @@
             this.contactFirstNameTxtBox.StateCommon.Content.Color1 = System.Drawing.Color.Gray;
             this.contactFirstNameTxtBox.StateCommon.Content.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.contactFirstNameTxtBox.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.contactFirstNameTxtBox.TabIndex = 4;
-            this.contactFirstNameTxtBox.Text = "First Name";
+            this.contactFirstNameTxtBox.TabIndex = 2;
             // 
             // contactLastNameTxtbox
             // 
             this.contactLastNameTxtbox.Location = new System.Drawing.Point(30, 252);
             this.contactLastNameTxtbox.Name = "contactLastNameTxtbox";
-            this.contactLastNameTxtbox.Size = new System.Drawing.Size(379, 40);
+            this.contactLastNameTxtbox.Size = new System.Drawing.Size(379, 37);
             this.contactLastNameTxtbox.StateCommon.Back.Color1 = System.Drawing.Color.White;
             this.contactLastNameTxtbox.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.contactLastNameTxtbox.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -111,14 +111,14 @@
             this.contactLastNameTxtbox.StateCommon.Content.Color1 = System.Drawing.Color.Gray;
             this.contactLastNameTxtbox.StateCommon.Content.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.contactLastNameTxtbox.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.contactLastNameTxtbox.TabIndex = 5;
-            this.contactLastNameTxtbox.Text = "Last Name";
+            this.contactLastNameTxtbox.TabIndex = 3;
+            this.contactLastNameTxtbox.TextChanged += new System.EventHandler(this.contactLastNameTxtbox_TextChanged);
             // 
             // contactCellTxtBox
             // 
             this.contactCellTxtBox.Location = new System.Drawing.Point(465, 178);
             this.contactCellTxtBox.Name = "contactCellTxtBox";
-            this.contactCellTxtBox.Size = new System.Drawing.Size(379, 40);
+            this.contactCellTxtBox.Size = new System.Drawing.Size(379, 37);
             this.contactCellTxtBox.StateCommon.Back.Color1 = System.Drawing.Color.White;
             this.contactCellTxtBox.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.contactCellTxtBox.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -132,13 +132,12 @@
             this.contactCellTxtBox.StateCommon.Content.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.contactCellTxtBox.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.contactCellTxtBox.TabIndex = 6;
-            this.contactCellTxtBox.Text = "Cell Number";
             // 
             // contactEmailTxtBox
             // 
-            this.contactEmailTxtBox.Location = new System.Drawing.Point(465, 252);
+            this.contactEmailTxtBox.Location = new System.Drawing.Point(30, 101);
             this.contactEmailTxtBox.Name = "contactEmailTxtBox";
-            this.contactEmailTxtBox.Size = new System.Drawing.Size(379, 40);
+            this.contactEmailTxtBox.Size = new System.Drawing.Size(379, 37);
             this.contactEmailTxtBox.StateCommon.Back.Color1 = System.Drawing.Color.White;
             this.contactEmailTxtBox.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.contactEmailTxtBox.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -151,12 +150,11 @@
             this.contactEmailTxtBox.StateCommon.Content.Color1 = System.Drawing.Color.Gray;
             this.contactEmailTxtBox.StateCommon.Content.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.contactEmailTxtBox.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.contactEmailTxtBox.TabIndex = 7;
-            this.contactEmailTxtBox.Text = "Email";
+            this.contactEmailTxtBox.TabIndex = 1;
             // 
             // createContactBtn
             // 
-            this.createContactBtn.Location = new System.Drawing.Point(333, 368);
+            this.createContactBtn.Location = new System.Drawing.Point(338, 398);
             this.createContactBtn.Name = "createContactBtn";
             this.createContactBtn.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.createContactBtn.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -210,14 +208,15 @@
             this.createContactBtn.StateTracking.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             this.createContactBtn.StateTracking.Border.Rounding = 20;
             this.createContactBtn.StateTracking.Border.Width = 1;
-            this.createContactBtn.TabIndex = 8;
+            this.createContactBtn.TabIndex = 10;
             this.createContactBtn.Values.Text = "Create";
+            this.createContactBtn.Click += new System.EventHandler(this.createContactBtn_Click);
             // 
             // categoryDropdownBox
             // 
             this.categoryDropdownBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.categoryDropdownBox.DropDownWidth = 367;
-            this.categoryDropdownBox.Location = new System.Drawing.Point(30, 104);
+            this.categoryDropdownBox.Location = new System.Drawing.Point(465, 249);
             this.categoryDropdownBox.Name = "categoryDropdownBox";
             this.categoryDropdownBox.Palette = this.kryptonPalette1;
             this.categoryDropdownBox.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
@@ -231,16 +230,17 @@
             this.categoryDropdownBox.StateCommon.ComboBox.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             this.categoryDropdownBox.StateCommon.ComboBox.Border.Rounding = 20;
             this.categoryDropdownBox.StateCommon.ComboBox.Border.Width = 1;
-            this.categoryDropdownBox.StateCommon.ComboBox.Content.Color1 = System.Drawing.Color.Gray;
+            this.categoryDropdownBox.StateCommon.ComboBox.Content.Color1 = System.Drawing.Color.Transparent;
             this.categoryDropdownBox.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.categoryDropdownBox.StateCommon.ComboBox.Content.Padding = new System.Windows.Forms.Padding(10, -1, 10, -1);
             this.categoryDropdownBox.StateCommon.DropBack.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.categoryDropdownBox.StateCommon.DropBack.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.categoryDropdownBox.StateCommon.DropBack.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.categoryDropdownBox.StateCommon.Item.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.categoryDropdownBox.StateCommon.Item.Content.ShortText.Color2 = System.Drawing.Color.White;
+            this.categoryDropdownBox.StateCommon.Item.Content.ShortText.Color1 = System.Drawing.Color.Black;
+            this.categoryDropdownBox.StateCommon.Item.Content.ShortText.Color2 = System.Drawing.Color.Black;
             this.categoryDropdownBox.StateCommon.Item.Content.ShortText.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.categoryDropdownBox.TabIndex = 9;
+            this.categoryDropdownBox.TabIndex = 7;
+            this.categoryDropdownBox.SelectedIndexChanged += new System.EventHandler(this.categoryDropdownBox_SelectedIndexChanged);
             // 
             // isActiveContactCheckBox
             // 
@@ -254,11 +254,12 @@
             this.isActiveContactCheckBox.StateCommon.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.isActiveContactCheckBox.StateCommon.ShortText.ColorAngle = 45F;
             this.isActiveContactCheckBox.StateCommon.ShortText.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.isActiveContactCheckBox.TabIndex = 10;
+            this.isActiveContactCheckBox.TabIndex = 9;
             this.isActiveContactCheckBox.Values.Text = "Is Active";
             // 
             // contactDateTimePicker
             // 
+            this.contactDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.contactDateTimePicker.Location = new System.Drawing.Point(465, 101);
             this.contactDateTimePicker.Name = "contactDateTimePicker";
             this.contactDateTimePicker.Palette = this.kryptonPalette1;
@@ -276,27 +277,23 @@
             this.contactDateTimePicker.StateCommon.Content.Color1 = System.Drawing.Color.Gray;
             this.contactDateTimePicker.StateCommon.Content.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.contactDateTimePicker.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10);
-            this.contactDateTimePicker.TabIndex = 11;
-            // 
-            // imageFileOpenDialog
-            // 
-            this.imageFileOpenDialog.FileName = "openFileDialog1";
-            this.imageFileOpenDialog.Title = "Upload Contact Image";
+            this.contactDateTimePicker.TabIndex = 5;
             // 
             // uploadBtn
             // 
             this.uploadBtn.Location = new System.Drawing.Point(40, 327);
             this.uploadBtn.Name = "uploadBtn";
             this.uploadBtn.Size = new System.Drawing.Size(90, 25);
-            this.uploadBtn.TabIndex = 12;
+            this.uploadBtn.TabIndex = 8;
             this.uploadBtn.Values.Text = "Upload";
+            this.uploadBtn.Click += new System.EventHandler(this.uploadBtn_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(36, 82);
+            this.label1.Location = new System.Drawing.Point(461, 227);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(96, 19);
             this.label1.TabIndex = 13;
@@ -351,7 +348,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label6.Location = new System.Drawing.Point(471, 230);
+            this.label6.Location = new System.Drawing.Point(36, 79);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(86, 19);
             this.label6.TabIndex = 18;
@@ -369,11 +366,20 @@
             this.label7.Text = "Upload Image";
             this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
+            // imageBox
+            // 
+            this.imageBox.Location = new System.Drawing.Point(145, 309);
+            this.imageBox.Name = "imageBox";
+            this.imageBox.Size = new System.Drawing.Size(100, 100);
+            this.imageBox.TabIndex = 20;
+            this.imageBox.TabStop = false;
+            // 
             // CreateContact
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 435);
+            this.ClientSize = new System.Drawing.Size(884, 474);
+            this.Controls.Add(this.imageBox);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -396,6 +402,7 @@
             this.Text = "CreateContact";
             this.Load += new System.EventHandler(this.CreateContact_Load);
             ((System.ComponentModel.ISupportInitialize)(this.categoryDropdownBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -414,7 +421,6 @@
         private ComponentFactory.Krypton.Toolkit.KryptonCheckBox isActiveContactCheckBox;
         private ComponentFactory.Krypton.Toolkit.KryptonPalette kryptonPalette1;
         private ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker contactDateTimePicker;
-        private System.Windows.Forms.OpenFileDialog imageFileOpenDialog;
         private ComponentFactory.Krypton.Toolkit.KryptonButton uploadBtn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -423,5 +429,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.PictureBox imageBox;
     }
 }
