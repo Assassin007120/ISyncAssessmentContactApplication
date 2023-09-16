@@ -52,6 +52,7 @@
             this.dateCreatedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.aCTIVEDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.contactDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.contactBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iSyncContactdBDataSet1)).BeginInit();
@@ -103,7 +104,7 @@
             this.lblDisplayContact.AutoSize = true;
             this.lblDisplayContact.Font = new System.Drawing.Font("Poppins", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDisplayContact.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblDisplayContact.Location = new System.Drawing.Point(352, 6);
+            this.lblDisplayContact.Location = new System.Drawing.Point(402, 1);
             this.lblDisplayContact.Name = "lblDisplayContact";
             this.lblDisplayContact.Size = new System.Drawing.Size(137, 36);
             this.lblDisplayContact.TabIndex = 2;
@@ -114,7 +115,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(285, 42);
+            this.label2.Location = new System.Drawing.Point(335, 37);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(289, 25);
             this.label2.TabIndex = 3;
@@ -135,11 +136,12 @@
             this.emailDataGridViewTextBoxColumn,
             this.dateCreatedDataGridViewTextBoxColumn,
             this.aCTIVEDataGridViewCheckBoxColumn,
-            this.Delete});
+            this.Delete,
+            this.Edit});
             this.contactDataGridView.DataSource = this.contactBindingSource;
             this.contactDataGridView.Location = new System.Drawing.Point(13, 158);
             this.contactDataGridView.Name = "contactDataGridView";
-            this.contactDataGridView.Size = new System.Drawing.Size(942, 341);
+            this.contactDataGridView.Size = new System.Drawing.Size(941, 341);
             this.contactDataGridView.StateCommon.Background.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.contactDataGridView.StateCommon.Background.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.contactDataGridView.StateCommon.Background.ColorAngle = 45F;
@@ -206,7 +208,7 @@
             // 
             // contactSearchTextBox
             // 
-            this.contactSearchTextBox.Location = new System.Drawing.Point(752, 118);
+            this.contactSearchTextBox.Location = new System.Drawing.Point(751, 119);
             this.contactSearchTextBox.Name = "contactSearchTextBox";
             this.contactSearchTextBox.Size = new System.Drawing.Size(203, 33);
             this.contactSearchTextBox.StateActive.Back.Color1 = System.Drawing.Color.White;
@@ -233,7 +235,7 @@
             // 
             // createContactBtn
             // 
-            this.createContactBtn.Location = new System.Drawing.Point(337, 70);
+            this.createContactBtn.Location = new System.Drawing.Point(387, 65);
             this.createContactBtn.Name = "createContactBtn";
             this.createContactBtn.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.createContactBtn.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -474,17 +476,28 @@
             // 
             // Delete
             // 
-            this.Delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Delete.HeaderText = "Delete";
             this.Delete.Name = "Delete";
+            this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Delete.Text = "Delete Contact";
+            this.Delete.ToolTipText = "Delete Contact";
+            this.Delete.Width = 50;
+            // 
+            // Edit
+            // 
+            this.Edit.HeaderText = "Edit";
+            this.Edit.Name = "Edit";
+            this.Edit.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Edit.Text = "Edit Contact";
+            this.Edit.ToolTipText = "Edit Contact";
+            this.Edit.Width = 50;
             // 
             // ContactList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
-            this.ClientSize = new System.Drawing.Size(972, 512);
+            this.ClientSize = new System.Drawing.Size(968, 512);
             this.Controls.Add(this.inactiveFilterBtn);
             this.Controls.Add(this.isActiveFilterBtn);
             this.Controls.Add(this.createContactBtn);
@@ -536,5 +549,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dateCreatedDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn aCTIVEDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn Delete;
+        private System.Windows.Forms.DataGridViewButtonColumn Edit;
     }
 }

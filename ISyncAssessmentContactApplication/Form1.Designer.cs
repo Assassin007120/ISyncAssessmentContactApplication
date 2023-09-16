@@ -73,26 +73,28 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Poppins", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(32, 91);
+            this.label1.Location = new System.Drawing.Point(99, 72);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(322, 36);
             this.label1.TabIndex = 0;
             this.label1.Text = "Contact Management System";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(33, 127);
+            this.label2.Location = new System.Drawing.Point(55, 108);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(415, 25);
             this.label2.TabIndex = 1;
             this.label2.Text = "Welcome to the next generation of contact management";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // createMainFrmCategoryBtn
             // 
-            this.createMainFrmCategoryBtn.Location = new System.Drawing.Point(35, 192);
+            this.createMainFrmCategoryBtn.Location = new System.Drawing.Point(74, 173);
             this.createMainFrmCategoryBtn.Name = "createMainFrmCategoryBtn";
             this.createMainFrmCategoryBtn.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.createMainFrmCategoryBtn.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -152,7 +154,7 @@
             // 
             // kryptonButton1
             // 
-            this.kryptonButton1.Location = new System.Drawing.Point(223, 192);
+            this.kryptonButton1.Location = new System.Drawing.Point(262, 173);
             this.kryptonButton1.Name = "kryptonButton1";
             this.kryptonButton1.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.kryptonButton1.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
@@ -214,7 +216,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
-            this.ClientSize = new System.Drawing.Size(770, 369);
+            this.ClientSize = new System.Drawing.Size(536, 294);
             this.Controls.Add(this.kryptonButton1);
             this.Controls.Add(this.createMainFrmCategoryBtn);
             this.Controls.Add(this.label2);

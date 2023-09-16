@@ -10,12 +10,14 @@ using ComponentFactory.Krypton.Toolkit;
 using System.Windows.Forms;
 using System.Configuration;
 using System.Data.SqlClient;
+using ISyncAssessmentContactApplication.DTOs;
 
 namespace ISyncAssessmentContactApplication.Forms
 {
     public partial class ContactList : KryptonForm
     {
         string connStr = ConfigurationManager.ConnectionStrings["ApplicationConnectionString"].ConnectionString;
+        EditContactDTO editContactDTO = new EditContactDTO();
         public ContactList()
         {
             InitializeComponent();
@@ -138,15 +140,54 @@ namespace ISyncAssessmentContactApplication.Forms
 
         private void contactDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            //Delete Contact
             if (contactDataGridView.CurrentCell.ColumnIndex.Equals(9) && e.RowIndex != -1)
             {
                 int contactId = Convert.ToInt32(contactDataGridView.Rows[e.RowIndex].Cells[0].Value);
 
                 DeleteContact(contactId);
             }
+
+            //Edit Contact
+            if (contactDataGridView.CurrentCell.ColumnIndex.Equals(10) && e.RowIndex != -1)
+            {
+                editContactDTO.Id = Convert.ToInt32(contactDataGridView.Rows[e.RowIndex].Cells[0].Value);
+                editContactDTO.CategoryId = Convert.ToInt32(contactDataGridView.Rows[e.RowIndex].Cells[1].Value);
+                editContactDTO.FirstName = contactDataGridView.Rows[e.RowIndex].Cells[2].Value.ToString();
+                editContactDTO.LastName = contactDataGridView.Rows[e.RowIndex].Cells[3].Value.ToString();
+                editContactDTO.DateOfBirth = Convert.ToDateTime(contactDataGridView.Rows[e.RowIndex].Cells[4].Value);
+                editContactDTO.CellNumber = contactDataGridView.Rows[e.RowIndex].Cells[5].Value.ToString();
+                editContactDTO.Email = contactDataGridView.Rows[e.RowIndex].Cells[6].Value.ToString();
+                editContactDTO.IsActive = Convert.ToInt32(contactDataGridView.Rows[e.RowIndex].Cells[8].Value);
+
+                EditContact(editContactDTO);
+            }
         }
 
-        public void DeleteContact(int contactId)
+        private void EditContact(EditContactDTO editContactDTO)
+        {
+            SqlConnection conn = new SqlConnection(connStr);
+
+            string queryContactToBeEdited = "UPDATE dbo.Contact SET CategoryId = " + editContactDTO.CategoryId + ", FirstName = '" + editContactDTO.FirstName + "', LastName = '" + editContactDTO.LastName + "', DateOfBirth = '" + editContactDTO.DateOfBirth + "', CellNumber = '" + editContactDTO.CellNumber+ "', Email = '" + editContactDTO.Email+ "', ACTIVE = " + editContactDTO.IsActive + " WHERE Id = " + editContactDTO.Id + "";
+
+            SqlCommand cmd = new SqlCommand(queryContactToBeEdited, conn);
+
+            conn.Open();
+
+            int i = cmd.ExecuteNonQuery();
+
+            if (i != 0)
+            {
+                MessageBox.Show("Change Saved");
+                GetContacts();
+            }
+            else
+            {
+                MessageBox.Show("Failed");
+            }
+        }
+
+        private void DeleteContact(int contactId)
         {
             SqlConnection conn = new SqlConnection(connStr);
 
