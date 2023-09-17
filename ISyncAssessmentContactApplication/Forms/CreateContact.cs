@@ -13,6 +13,9 @@ using System.Data.SqlClient;
 using System.IO;
 using ISyncAssessmentContactApplication.DTOs;
 using System.Text.RegularExpressions;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using System.Xml.Linq;
+using System.Diagnostics.Tracing;
 
 namespace ISyncAssessmentContactApplication.Forms
 {
@@ -26,7 +29,6 @@ namespace ISyncAssessmentContactApplication.Forms
 
         public CreateContact()
         {
-            SqlConnection conn = new SqlConnection(connStr);
             InitializeComponent();
             PopulateCategoryComboBox();
         }
@@ -120,73 +122,63 @@ namespace ISyncAssessmentContactApplication.Forms
                 string email = contactEmailTxtBox.Text;
                 string fname = contactFirstNameTxtBox.Text;
                 string lname = contactLastNameTxtbox.Text;
-
-                //Validate email address is a valid email, return result to DTO
-                messageDTO = ValidateEmailAddress(email);
-
-                //Check IsValid result from method
-                if (messageDTO.IsValid == false)
-                {
-                    //Show validation message to user on validation failure
-                    MessageBox.Show(messageDTO.Message, "Validation Error");
-                }
-
-                //Validate variables for nulls/empty strings
-                messageDTO = ValidateRequiredFormFields(email, fname, lname);
-
-                //Check IsValid result from method
-                if (messageDTO.IsValid == false)
-                {
-                    //Show validation message to user on validation failure
-                    MessageBox.Show(messageDTO.Message, "Validation Error");
-                }
-
-                //Get remaining values from form fields
-                string cellNumber = contactCellTxtBox.Text;
-                DateTime dateOfBirth = Convert.ToDateTime(contactDateTimePicker.Value.ToShortDateString()); //Convert value to ShortDateTimeString
-                bool isActive = isActiveContactCheckBox.Checked;
-                DateTime dateCreated = DateTime.Now;
                 byte[] image = imageDTO.imageByte;
 
+                //Validate all required fields
+                var validationResult = Validate(email, fname, lname, image);
 
-                //Create Insert SQL string
-                string contactInsert = "INSERT INTO dbo.Contact (CategoryId, FirstName, LastName, DateOfBirth, CellNumber, Email, ContactImage, DateCreated, ACTIVE) VALUES (@CategoryId, @FirstName, @LastName, @DateOfBirth, @CellNumber, @Email, @ContactImage, @DateCreated, @ACTIVE)";
+                if (validationResult != false)
+                {
+                    //Get remaining values from form fields
+                    string cellNumber = contactCellTxtBox.Text;
+                    DateTime dateOfBirth = Convert.ToDateTime(contactDateTimePicker.Value.ToShortDateString()); //Convert value to ShortDateTimeString
+                    bool isActive = isActiveContactCheckBox.Checked;
+                    DateTime dateCreated = DateTime.Now;
 
-                SqlCommand cmd = new SqlCommand(contactInsert, conn);
+
+                    //Create Insert SQL string
+                    string contactInsert = "INSERT INTO dbo.Contact (CategoryId, FirstName, LastName, DateOfBirth, CellNumber, Email, ContactImage, DateCreated, ACTIVE) VALUES (@CategoryId, @FirstName, @LastName, @DateOfBirth, @CellNumber, @Email, @ContactImage, @DateCreated, @ACTIVE)";
+
+                    SqlCommand cmd = new SqlCommand(contactInsert, conn);
                 
-                //Add parameters with their corresponding values
-                cmd.Parameters.AddWithValue("@CategoryId", categoryId);
-                cmd.Parameters.AddWithValue("@FirstName", fname);
-                cmd.Parameters.AddWithValue("@LastName", lname);
-                cmd.Parameters.AddWithValue("@DateOfBirth", dateOfBirth);
-                cmd.Parameters.AddWithValue("@CellNumber", cellNumber);
-                cmd.Parameters.AddWithValue("@Email", email);
-                cmd.Parameters.AddWithValue("@ContactImage", image);
-                cmd.Parameters.AddWithValue("@DateCreated", dateCreated);
-                cmd.Parameters.AddWithValue("@ACTIVE", isActive);
+                    //Add parameters with their corresponding values
+                    cmd.Parameters.AddWithValue("@CategoryId", categoryId);
+                    cmd.Parameters.AddWithValue("@FirstName", fname);
+                    cmd.Parameters.AddWithValue("@LastName", lname);
+                    cmd.Parameters.AddWithValue("@DateOfBirth", dateOfBirth);
+                    cmd.Parameters.AddWithValue("@CellNumber", cellNumber);
+                    cmd.Parameters.AddWithValue("@Email", email);
+                    cmd.Parameters.AddWithValue("@ContactImage", image);
+                    cmd.Parameters.AddWithValue("@DateCreated", dateCreated);
+                    cmd.Parameters.AddWithValue("@ACTIVE", isActive);
 
-                //Run SQL Statement, return result value to i variable
-                int i = cmd.ExecuteNonQuery();
+                    //Run SQL Statement, return result value to i variable
+                    int i = cmd.ExecuteNonQuery();
 
-                //If statement to check success of the command execution
-                if (i != 0)
-                {
-                    //Show messagebox of success to user
-                    MessageBox.Show("Contact Created!", "Success");
+                    //If statement to check success of the command execution
+                    if (i != 0)
+                    {
+                        //Show messagebox of success to user
+                        MessageBox.Show("Contact Created!", "Success");
 
-                    var contactListFrm = new ContactList();
+                        var contactListFrm = new ContactList();
 
-                    //Redirect User to ContactListFrm
-                    contactListFrm.ShowDialog();
+                        //Redirect User to ContactListFrm
+                        contactListFrm.ShowDialog();
+                    }
+                    else
+                    {
+                        //Show failure messagebox
+                        MessageBox.Show("Contact Failed to create!", "Error");
+                    }
+
+                    //Close connection
+                    conn.Close();
+
+                    //Close dialogBox
+                    this.Close();
                 }
-                else
-                {
-                    //Show failure messagebox
-                    MessageBox.Show("Contact Failed to create!", "Error");
-                }
 
-                //Close connection
-                conn.Close();
             }
             catch (Exception exception)
             {
@@ -261,6 +253,45 @@ namespace ISyncAssessmentContactApplication.Forms
 
         }
 
+        //Validate
+        private bool Validate(string email, string fname, string lname, byte[] image)
+        {
+            try
+            {
+                //Validate email address is a valid email, return result to DTO
+                messageDTO = ValidateEmailAddress(email);
+
+                //Check IsValid result from method
+                if (messageDTO.IsValid == false)
+                {
+                    //Show validation message to user on validation failure
+                    MessageBox.Show(messageDTO.Message, "Validation Error");
+
+                    return false;
+                }
+
+                //Validate variables for nulls/empty strings
+                messageDTO = ValidateRequiredFormFields(email, fname, lname, image);
+
+                //Check IsValid result from method
+                if (messageDTO.IsValid == false)
+                {
+                    //Show validation message to user on validation failure
+                    MessageBox.Show(messageDTO.Message, "Validation Error");
+
+                    return false;
+                }
+
+                return true;
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, "Exception");
+
+                return false;
+            }
+        }
+
         //Validate Email Address
         private ValidationMessageDTO ValidateEmailAddress(string email)
         {
@@ -290,7 +321,7 @@ namespace ISyncAssessmentContactApplication.Forms
                     {
                         //Create bool and message result on validation Fail
                         validationDTO.IsValid = false;
-                        validationDTO.Message = "Email Address is failed validation";
+                        validationDTO.Message = "Email Address is not valid. Please enter a valid email address";
 
                         //Return DTO
                         return validationDTO;
@@ -316,7 +347,7 @@ namespace ISyncAssessmentContactApplication.Forms
         }
 
         //Validate null or empty
-        private ValidationMessageDTO ValidateRequiredFormFields(string email, string fname, string lname)
+        private ValidationMessageDTO ValidateRequiredFormFields(string email, string fname, string lname, byte[] image)
         {
             try
             {
@@ -348,6 +379,16 @@ namespace ISyncAssessmentContactApplication.Forms
                     //Create bool and message result
                     messageDTO.IsValid = false;
                     messageDTO.Message = "Invalid User Input. Last Name cannot be empty.";
+
+                    //Return DTO
+                    return messageDTO;
+                }
+
+                if (image == null)
+                {
+                    //Create bool and message result
+                    messageDTO.IsValid = false;
+                    messageDTO.Message = "Invalid User Input. Please upload a contact image";
 
                     //Return DTO
                     return messageDTO;
