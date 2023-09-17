@@ -123,14 +123,14 @@ namespace ISyncAssessmentContactApplication.Forms
                 string fname = contactFirstNameTxtBox.Text;
                 string lname = contactLastNameTxtbox.Text;
                 byte[] image = imageDTO.imageByte;
+                string cellNumber = contactCellTxtBox.Text;
 
                 //Validate all required fields
-                var validationResult = Validate(email, fname, lname, image);
+                var validationResult = Validate(email, fname, lname, image, cellNumber);
 
                 if (validationResult != false)
                 {
                     //Get remaining values from form fields
-                    string cellNumber = contactCellTxtBox.Text;
                     DateTime dateOfBirth = Convert.ToDateTime(contactDateTimePicker.Value.ToShortDateString()); //Convert value to ShortDateTimeString
                     bool isActive = isActiveContactCheckBox.Checked;
                     DateTime dateCreated = DateTime.Now;
@@ -254,7 +254,7 @@ namespace ISyncAssessmentContactApplication.Forms
         }
 
         //Validate
-        private bool Validate(string email, string fname, string lname, byte[] image)
+        private bool Validate(string email, string fname, string lname, byte[] image, string cellNumber)
         {
             try
             {
@@ -274,6 +274,17 @@ namespace ISyncAssessmentContactApplication.Forms
                 messageDTO = ValidateRequiredFormFields(email, fname, lname, image);
 
                 //Check IsValid result from method
+                if (messageDTO.IsValid == false)
+                {
+                    //Show validation message to user on validation failure
+                    MessageBox.Show(messageDTO.Message, "Validation Error");
+
+                    return false;
+                }
+
+                messageDTO = ValidationOnCellNumber(cellNumber);
+
+                //Check IsValid From method
                 if (messageDTO.IsValid == false)
                 {
                     //Show validation message to user on validation failure
@@ -410,6 +421,58 @@ namespace ISyncAssessmentContactApplication.Forms
                 //Return DTO
                 return messageDTO;
             }  
+        }
+
+        //Validate Cell Number
+        private ValidationMessageDTO ValidationOnCellNumber(string cellNumber)
+        {
+            ValidationMessageDTO validationDTO = new ValidationMessageDTO();
+
+            try
+            {
+                if (cellNumber != null)
+                {
+                    Regex regex = new Regex(@"\+([A-Za-z0-9]+( [A-Za-z0-9]+)+)");
+
+                    Match match = regex.Match(cellNumber);
+
+                    //Check if the email match is successful
+                    if (match.Success)
+                    {
+                        //Create bool result and message
+                        validationDTO.IsValid = true;
+                        validationDTO.Message = "Cell Number is valid";
+
+                        //Return DTO
+                        return validationDTO;
+                    }
+                    else
+                    {
+                        //Create bool and message result on validation Fail
+                        validationDTO.IsValid = false;
+                        validationDTO.Message = "Cell Number is not valid. Please enter a valid cell number";
+
+                        //Return DTO
+                        return validationDTO;
+                    }
+                }
+
+                //Create bool and message result if email variable is null
+                validationDTO.IsValid = false;
+                validationDTO.Message = "Invalid User Input. Email is empty";
+
+                //Return DTO
+                return validationDTO;
+            }
+            catch (Exception exception)
+            {
+                //Create exception messages
+                validationDTO.IsValid = false;
+                validationDTO.Message = exception.Message;
+
+                //return ValidationDTO
+                return validationDTO;
+            }
         }
     }
 }
