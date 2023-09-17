@@ -51,8 +51,8 @@
             this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateCreatedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.aCTIVEDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.contactDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.contactBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iSyncContactdBDataSet1)).BeginInit();
@@ -136,8 +136,8 @@
             this.emailDataGridViewTextBoxColumn,
             this.dateCreatedDataGridViewTextBoxColumn,
             this.aCTIVEDataGridViewCheckBoxColumn,
-            this.Delete,
-            this.Edit});
+            this.Edit,
+            this.Delete});
             this.contactDataGridView.DataSource = this.contactBindingSource;
             this.contactDataGridView.Location = new System.Drawing.Point(13, 158);
             this.contactDataGridView.Name = "contactDataGridView";
@@ -474,15 +474,6 @@
             this.aCTIVEDataGridViewCheckBoxColumn.HeaderText = "Is Active";
             this.aCTIVEDataGridViewCheckBoxColumn.Name = "aCTIVEDataGridViewCheckBoxColumn";
             // 
-            // Delete
-            // 
-            this.Delete.HeaderText = "Delete";
-            this.Delete.Name = "Delete";
-            this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Delete.Text = "Delete Contact";
-            this.Delete.ToolTipText = "Delete Contact";
-            this.Delete.Width = 50;
-            // 
             // Edit
             // 
             this.Edit.HeaderText = "Edit";
@@ -491,6 +482,15 @@
             this.Edit.Text = "Edit Contact";
             this.Edit.ToolTipText = "Edit Contact";
             this.Edit.Width = 50;
+            // 
+            // Delete
+            // 
+            this.Delete.HeaderText = "Delete";
+            this.Delete.Name = "Delete";
+            this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Delete.Text = "Delete Contact";
+            this.Delete.ToolTipText = "Delete Contact";
+            this.Delete.Width = 50;
             // 
             // ContactList
             // 
@@ -548,7 +548,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateCreatedDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn aCTIVEDataGridViewCheckBoxColumn;
-        private System.Windows.Forms.DataGridViewButtonColumn Delete;
         private System.Windows.Forms.DataGridViewButtonColumn Edit;
+        private System.Windows.Forms.DataGridViewButtonColumn Delete;
     }
 }
