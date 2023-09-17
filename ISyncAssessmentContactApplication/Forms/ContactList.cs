@@ -327,5 +327,54 @@ namespace ISyncAssessmentContactApplication.Forms
                 MessageBox.Show(exception.Message, "Exception");
             }
         }
+
+        //Filter All Contacts Button
+        private void filterAllBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //Call FilterAllContacts() method
+                FilterAllContacts();
+            }
+            catch (Exception exception)
+            {
+                //Handle any exceptions that get may occur and return result to user
+                MessageBox.Show(exception.Message, "Exception");
+            }
+        }
+        
+        //Filter All Contacts Method
+        private void FilterAllContacts()
+        {
+            try
+            {
+                SqlConnection conn = new SqlConnection(connStr);
+
+                //query to select all contacts
+                string queryContactFilteredData = "SELECT * FROM dbo.Contact";
+
+                SqlCommand cmd = new SqlCommand(queryContactFilteredData, conn);
+
+                SqlDataAdapter sdr = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                BindingSource bs = new BindingSource();
+
+                //Open Connection
+                conn.Open();
+
+                //Insert and set filtered data into datatable
+                sdr.Fill(dt);
+                bs.DataSource = contactDataGridView.DataSource;
+                contactDataGridView.DataSource = dt;
+
+                //Close Connection
+                conn.Close();
+            }
+            catch (Exception exception)
+            {
+                //Handle any exceptions that get may occur and return result to user
+                MessageBox.Show(exception.Message, "Exception");
+            }
+        }
     }
 }

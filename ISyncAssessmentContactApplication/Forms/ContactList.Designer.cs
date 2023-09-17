@@ -33,15 +33,6 @@
             this.lblDisplayContact = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.contactDataGridView = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.contactBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.iSyncContactdBDataSet1 = new ISyncAssessmentContactApplication.ISyncContactdBDataSet1();
-            this.iSyncContactdBDataSet = new ISyncAssessmentContactApplication.ISyncContactdBDataSet();
-            this.iSyncContactdBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.contactTableAdapter = new ISyncAssessmentContactApplication.ISyncContactdBDataSet1TableAdapters.ContactTableAdapter();
-            this.contactSearchTextBox = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
-            this.createContactBtn = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.isActiveFilterBtn = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.inactiveFilterBtn = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.categoryIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,6 +44,16 @@
             this.aCTIVEDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.contactBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.iSyncContactdBDataSet1 = new ISyncAssessmentContactApplication.ISyncContactdBDataSet1();
+            this.iSyncContactdBDataSet = new ISyncAssessmentContactApplication.ISyncContactdBDataSet();
+            this.iSyncContactdBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.contactTableAdapter = new ISyncAssessmentContactApplication.ISyncContactdBDataSet1TableAdapters.ContactTableAdapter();
+            this.contactSearchTextBox = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.createContactBtn = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.isActiveFilterBtn = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.inactiveFilterBtn = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.filterAllBtn = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.contactDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.contactBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iSyncContactdBDataSet1)).BeginInit();
@@ -182,6 +183,82 @@
             this.contactDataGridView.TabIndex = 4;
             this.contactDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.contactDataGridView_CellContentClick);
             // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
+            // categoryIdDataGridViewTextBoxColumn
+            // 
+            this.categoryIdDataGridViewTextBoxColumn.DataPropertyName = "CategoryId";
+            this.categoryIdDataGridViewTextBoxColumn.HeaderText = "CategoryId";
+            this.categoryIdDataGridViewTextBoxColumn.Name = "categoryIdDataGridViewTextBoxColumn";
+            // 
+            // firstNameDataGridViewTextBoxColumn
+            // 
+            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.HeaderText = "First Name";
+            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
+            // 
+            // lastNameDataGridViewTextBoxColumn
+            // 
+            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.HeaderText = "Last Name";
+            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
+            // 
+            // dateOfBirthDataGridViewTextBoxColumn
+            // 
+            this.dateOfBirthDataGridViewTextBoxColumn.DataPropertyName = "DateOfBirth";
+            this.dateOfBirthDataGridViewTextBoxColumn.HeaderText = "Date Of Birth";
+            this.dateOfBirthDataGridViewTextBoxColumn.Name = "dateOfBirthDataGridViewTextBoxColumn";
+            // 
+            // cellNumberDataGridViewTextBoxColumn
+            // 
+            this.cellNumberDataGridViewTextBoxColumn.DataPropertyName = "CellNumber";
+            this.cellNumberDataGridViewTextBoxColumn.HeaderText = "Cell Number";
+            this.cellNumberDataGridViewTextBoxColumn.Name = "cellNumberDataGridViewTextBoxColumn";
+            // 
+            // emailDataGridViewTextBoxColumn
+            // 
+            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
+            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
+            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            // 
+            // dateCreatedDataGridViewTextBoxColumn
+            // 
+            this.dateCreatedDataGridViewTextBoxColumn.DataPropertyName = "DateCreated";
+            this.dateCreatedDataGridViewTextBoxColumn.HeaderText = "Date Created";
+            this.dateCreatedDataGridViewTextBoxColumn.Name = "dateCreatedDataGridViewTextBoxColumn";
+            this.dateCreatedDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dateCreatedDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // aCTIVEDataGridViewCheckBoxColumn
+            // 
+            this.aCTIVEDataGridViewCheckBoxColumn.DataPropertyName = "ACTIVE";
+            this.aCTIVEDataGridViewCheckBoxColumn.HeaderText = "Is Active";
+            this.aCTIVEDataGridViewCheckBoxColumn.Name = "aCTIVEDataGridViewCheckBoxColumn";
+            // 
+            // Edit
+            // 
+            this.Edit.HeaderText = "Edit";
+            this.Edit.Name = "Edit";
+            this.Edit.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Edit.Text = "Edit Contact";
+            this.Edit.ToolTipText = "Edit Contact";
+            this.Edit.Width = 50;
+            // 
+            // Delete
+            // 
+            this.Delete.HeaderText = "Delete";
+            this.Delete.Name = "Delete";
+            this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Delete.Text = "Delete Contact";
+            this.Delete.ToolTipText = "Delete Contact";
+            this.Delete.Width = 50;
+            // 
             // contactBindingSource
             // 
             this.contactBindingSource.DataMember = "Contact";
@@ -307,7 +384,7 @@
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.isActiveFilterBtn.OverrideDefault.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.isActiveFilterBtn.OverrideDefault.Border.Rounding = 20;
+            this.isActiveFilterBtn.OverrideDefault.Border.Rounding = 1;
             this.isActiveFilterBtn.OverrideDefault.Border.Width = 1;
             this.isActiveFilterBtn.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             this.isActiveFilterBtn.Size = new System.Drawing.Size(76, 24);
@@ -369,7 +446,7 @@
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.inactiveFilterBtn.OverrideDefault.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.inactiveFilterBtn.OverrideDefault.Border.Rounding = 20;
+            this.inactiveFilterBtn.OverrideDefault.Border.Rounding = 1;
             this.inactiveFilterBtn.OverrideDefault.Border.Width = 1;
             this.inactiveFilterBtn.Size = new System.Drawing.Size(76, 24);
             this.inactiveFilterBtn.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
@@ -416,81 +493,67 @@
             this.inactiveFilterBtn.Values.Text = "Inactive";
             this.inactiveFilterBtn.Click += new System.EventHandler(this.inactiveFilterBtn_Click);
             // 
-            // Id
+            // filterAllBtn
             // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
-            // 
-            // categoryIdDataGridViewTextBoxColumn
-            // 
-            this.categoryIdDataGridViewTextBoxColumn.DataPropertyName = "CategoryId";
-            this.categoryIdDataGridViewTextBoxColumn.HeaderText = "CategoryId";
-            this.categoryIdDataGridViewTextBoxColumn.Name = "categoryIdDataGridViewTextBoxColumn";
-            // 
-            // firstNameDataGridViewTextBoxColumn
-            // 
-            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.HeaderText = "First Name";
-            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
-            // 
-            // lastNameDataGridViewTextBoxColumn
-            // 
-            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.HeaderText = "Last Name";
-            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
-            // 
-            // dateOfBirthDataGridViewTextBoxColumn
-            // 
-            this.dateOfBirthDataGridViewTextBoxColumn.DataPropertyName = "DateOfBirth";
-            this.dateOfBirthDataGridViewTextBoxColumn.HeaderText = "Date Of Birth";
-            this.dateOfBirthDataGridViewTextBoxColumn.Name = "dateOfBirthDataGridViewTextBoxColumn";
-            // 
-            // cellNumberDataGridViewTextBoxColumn
-            // 
-            this.cellNumberDataGridViewTextBoxColumn.DataPropertyName = "CellNumber";
-            this.cellNumberDataGridViewTextBoxColumn.HeaderText = "Cell Number";
-            this.cellNumberDataGridViewTextBoxColumn.Name = "cellNumberDataGridViewTextBoxColumn";
-            // 
-            // emailDataGridViewTextBoxColumn
-            // 
-            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
-            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
-            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
-            // 
-            // dateCreatedDataGridViewTextBoxColumn
-            // 
-            this.dateCreatedDataGridViewTextBoxColumn.DataPropertyName = "DateCreated";
-            this.dateCreatedDataGridViewTextBoxColumn.HeaderText = "Date Created";
-            this.dateCreatedDataGridViewTextBoxColumn.Name = "dateCreatedDataGridViewTextBoxColumn";
-            this.dateCreatedDataGridViewTextBoxColumn.ReadOnly = true;
-            this.dateCreatedDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // aCTIVEDataGridViewCheckBoxColumn
-            // 
-            this.aCTIVEDataGridViewCheckBoxColumn.DataPropertyName = "ACTIVE";
-            this.aCTIVEDataGridViewCheckBoxColumn.HeaderText = "Is Active";
-            this.aCTIVEDataGridViewCheckBoxColumn.Name = "aCTIVEDataGridViewCheckBoxColumn";
-            // 
-            // Edit
-            // 
-            this.Edit.HeaderText = "Edit";
-            this.Edit.Name = "Edit";
-            this.Edit.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Edit.Text = "Edit Contact";
-            this.Edit.ToolTipText = "Edit Contact";
-            this.Edit.Width = 50;
-            // 
-            // Delete
-            // 
-            this.Delete.HeaderText = "Delete";
-            this.Delete.Name = "Delete";
-            this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Delete.Text = "Delete Contact";
-            this.Delete.ToolTipText = "Delete Contact";
-            this.Delete.Width = 50;
+            this.filterAllBtn.Location = new System.Drawing.Point(177, 128);
+            this.filterAllBtn.Name = "filterAllBtn";
+            this.filterAllBtn.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.filterAllBtn.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.filterAllBtn.OverrideDefault.Back.ColorAngle = 45F;
+            this.filterAllBtn.OverrideDefault.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.filterAllBtn.OverrideDefault.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.filterAllBtn.OverrideDefault.Border.ColorAngle = 45F;
+            this.filterAllBtn.OverrideDefault.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.filterAllBtn.OverrideDefault.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.filterAllBtn.OverrideDefault.Border.Rounding = 1;
+            this.filterAllBtn.OverrideDefault.Border.Width = 1;
+            this.filterAllBtn.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.filterAllBtn.Size = new System.Drawing.Size(84, 24);
+            this.filterAllBtn.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.filterAllBtn.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.filterAllBtn.StateCommon.Back.ColorAngle = 45F;
+            this.filterAllBtn.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.filterAllBtn.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.filterAllBtn.StateCommon.Border.ColorAngle = 45F;
+            this.filterAllBtn.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.filterAllBtn.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.filterAllBtn.StateCommon.Border.Rounding = 1;
+            this.filterAllBtn.StateCommon.Border.Width = 1;
+            this.filterAllBtn.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.filterAllBtn.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.filterAllBtn.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(145)))), ((int)(((byte)(198)))));
+            this.filterAllBtn.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.filterAllBtn.StatePressed.Back.ColorAngle = 135F;
+            this.filterAllBtn.StatePressed.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(145)))), ((int)(((byte)(198)))));
+            this.filterAllBtn.StatePressed.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.filterAllBtn.StatePressed.Border.ColorAngle = 135F;
+            this.filterAllBtn.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.filterAllBtn.StatePressed.Border.Rounding = 1;
+            this.filterAllBtn.StatePressed.Border.Width = 1;
+            this.filterAllBtn.StateTracking.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.filterAllBtn.StateTracking.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.filterAllBtn.StateTracking.Back.ColorAngle = 45F;
+            this.filterAllBtn.StateTracking.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.filterAllBtn.StateTracking.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.filterAllBtn.StateTracking.Border.ColorAngle = 45F;
+            this.filterAllBtn.StateTracking.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.filterAllBtn.StateTracking.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.filterAllBtn.StateTracking.Border.Rounding = 1;
+            this.filterAllBtn.StateTracking.Border.Width = 1;
+            this.filterAllBtn.StateTracking.Content.ShortText.Color1 = System.Drawing.Color.White;
+            this.filterAllBtn.StateTracking.Content.ShortText.Color2 = System.Drawing.Color.White;
+            this.filterAllBtn.StateTracking.Content.ShortText.ColorAngle = 45F;
+            this.filterAllBtn.TabIndex = 14;
+            this.filterAllBtn.Values.Text = "All Contacts";
+            this.filterAllBtn.Click += new System.EventHandler(this.filterAllBtn_Click);
             // 
             // ContactList
             // 
@@ -498,6 +561,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.ClientSize = new System.Drawing.Size(968, 512);
+            this.Controls.Add(this.filterAllBtn);
             this.Controls.Add(this.inactiveFilterBtn);
             this.Controls.Add(this.isActiveFilterBtn);
             this.Controls.Add(this.createContactBtn);
@@ -550,5 +614,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn aCTIVEDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn Edit;
         private System.Windows.Forms.DataGridViewButtonColumn Delete;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton filterAllBtn;
     }
 }
