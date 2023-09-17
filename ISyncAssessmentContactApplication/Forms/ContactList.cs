@@ -207,7 +207,7 @@ namespace ISyncAssessmentContactApplication.Forms
             try
             {
                 //Edit Contact - check if the edit cell has been selected
-                if (contactDataGridView.CurrentCell.ColumnIndex.Equals(10) && e.RowIndex != -1)
+                if (contactDataGridView.CurrentCell.ColumnIndex.Equals(9) && e.RowIndex != -1)
                 {
                     //Get all data from each cell on that row
                     editContactDTO.Id = Convert.ToInt32(contactDataGridView.Rows[e.RowIndex].Cells[0].Value); //Convert value to int
@@ -226,7 +226,7 @@ namespace ISyncAssessmentContactApplication.Forms
                 }
 
                 //Delete Contact - check if the delete cell has been selected
-                if (contactDataGridView.CurrentCell.ColumnIndex.Equals(9) && e.RowIndex != -1)
+                if (contactDataGridView.CurrentCell.ColumnIndex.Equals(10) && e.RowIndex != -1)
                 {
                     //Get contactId of row selected
                     int contactId = Convert.ToInt32(contactDataGridView.Rows[e.RowIndex].Cells[0].Value);
