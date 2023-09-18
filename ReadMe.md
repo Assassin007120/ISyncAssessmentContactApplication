@@ -32,6 +32,15 @@ CREATE TABLE Contact(
 INSERT INTO dbo.Category (CategoryName, IsActive)
 VALUES ('None', 1);
 
+<p>Create a connection string in the App.config like below:</p>
+
+	<connectionStrings>
+		<add name="ApplicationConnectionString" connectionString="Server=LAPTOP-1MM4UVCE\SQLEXPRESS;Database=ISyncContactdB;Trusted_Connection=true;MultipleActiveResultSets=true;" />
+		<add name="ISyncAssessmentContactApplication.Properties.Settings.ISyncContactdBConnectionString"
+		  connectionString="Data Source=LAPTOP-1MM4UVCE\SQLEXPRESS;Initial Catalog=ISyncContactdB;Integrated Security=True"
+		  providerName="System.Data.SqlClient" />
+	</connectionStrings>
+
 <h3>STEP 2:</h3>
 
 <p>A .zip file named 'Poppins' should be included, please install these fonts into your system</p>
@@ -55,5 +64,11 @@ VALUES ('None', 1);
 </ul>
 
 <h2>Set Up Complete</h2>
+
+<h5>Notes:</h5>
+<ul>
+	<li>Required field for Category are CategoryName</li>
+	<li>Required Fields for Contact are Email, First Name, Last Name and Contact Image</li>
+</ul>
 
 <p>----------------------------------------------------------------------------</p>
